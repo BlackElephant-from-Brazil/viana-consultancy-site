@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 import { getPostBySlug } from '@/lib/posts'
-import PostForm from '../../../_components/PostForm'
+import PostForm from '../../../../_components/PostForm'
 
 export const dynamic = 'force-dynamic'
 

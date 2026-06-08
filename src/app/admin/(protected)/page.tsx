@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { getAllPosts } from '@/lib/posts'
-import PostsTable from './_components/PostsTable'
+import PostsTable from '../_components/PostsTable'
 
 export const dynamic = 'force-dynamic'
 
