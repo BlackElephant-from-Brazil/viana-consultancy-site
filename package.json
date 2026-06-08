@@ -1,0 +1,44 @@
+{
+  "name": "viana-consultancy-site",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test": "jest"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/src/$1"
+    },
+    "testPathPattern": "src/__tests__"
+  },
+  "dependencies": {
+    "@netlify/blobs": "^10.7.9",
+    "bcryptjs": "^3.0.3",
+    "iron-session": "^8.0.4",
+    "lucide-react": "^1.17.0",
+    "next": "15.5.19",
+    "next-mdx-remote": "^6.0.0",
+    "react": "19.1.0",
+    "react-dom": "19.1.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@types/bcryptjs": "^3.0.0",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "15.5.19",
+    "jest": "^30.4.2",
+    "jest-environment-node": "^30.4.1",
+    "ts-jest": "^29.4.11",
+    "typescript": "^5"
+  }
+}
