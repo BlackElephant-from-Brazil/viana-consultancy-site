@@ -1,0 +1,1506 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Patrícia Viana — Lawyer</title>
+  <meta name="description" content="Patrícia Viana Law Firm — Expert Portuguese immigration attorneys helping you build a new life in Portugal. Residency, citizenship, visa assistance and more." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:       #011342;
+      --navy-80:    rgba(1,19,66,.8);
+      --gold:       #C9973A;
+      --gold-light: #E0B85C;
+      --gold-pale:  #FDF6E9;
+      --bg:         #F3F3F3;
+      --white:      #FFFFFF;
+      --text:       #5C5C5C;
+      --dark:       #1A1A2E;
+      --border:     #E0E0E0;
+      --radius:     8px;
+      --shadow:     0 4px 24px rgba(0,0,0,.1);
+      --max-w:      1140px;
+      --transition: 220ms ease;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 1.7;
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Marcellus', Georgia, serif;
+      color: var(--navy);
+      line-height: 1.2;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    ul { list-style: none; }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-w);
+      margin-inline: auto;
+      padding-inline: 20px;
+    }
+
+    /* ── Buttons ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 30px;
+      border-radius: 30px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition);
+      border: 2px solid transparent;
+      letter-spacing: .03em;
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: var(--white);
+      border-color: var(--gold);
+    }
+    .btn-gold:hover {
+      background: var(--gold-light);
+      border-color: var(--gold-light);
+      transform: scale(1.04);
+      box-shadow: 0 6px 20px rgba(201,151,58,.35);
+    }
+
+    .btn-outline-gold {
+      background: transparent;
+      color: var(--gold);
+      border-color: var(--gold);
+    }
+    .btn-outline-gold:hover {
+      background: var(--gold);
+      color: var(--white);
+    }
+
+    /* ── Section helpers ── */
+    .section { padding-block: 80px; }
+    .section--white { background: var(--white); }
+    .section--navy  { background: var(--navy); }
+
+    .section-tag {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+    .section-tag::before {
+      content: '';
+      width: 36px;
+      height: 2px;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      margin-bottom: 16px;
+    }
+
+    .section-sub {
+      font-size: 15px;
+      color: var(--text);
+      max-width: 600px;
+      line-height: 1.75;
+    }
+
+    /* ══════════════════════════════════
+       NAVIGATION
+    ══════════════════════════════════ */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding-block: 18px;
+      transition: background var(--transition), box-shadow var(--transition), padding var(--transition);
+    }
+
+    .nav.scrolled {
+      background: rgba(1,19,66,.97);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 20px rgba(0,0,0,.25);
+      padding-block: 12px;
+    }
+
+    .nav__inner {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .nav__logo img {
+      height: 38px;
+      width: auto;
+    }
+
+    .nav__menu {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      margin-left: auto;
+    }
+
+    .nav__menu a {
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255,255,255,.85);
+      letter-spacing: .04em;
+      transition: color var(--transition);
+      position: relative;
+    }
+
+    .nav__menu a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0; right: 0;
+      height: 2px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transition: transform var(--transition);
+    }
+
+    .nav__menu a:hover,
+    .nav__menu a.active { color: var(--gold); }
+    .nav__menu a:hover::after,
+    .nav__menu a.active::after { transform: scaleX(1); }
+
+    .nav__socials {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-left: 16px;
+    }
+
+    .nav__socials a {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,.7);
+      transition: color var(--transition);
+    }
+    .nav__socials a:hover { color: var(--gold); }
+    .nav__socials svg { width: 16px; height: 16px; fill: currentColor; }
+
+    .nav__toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      margin-left: auto;
+    }
+    .nav__toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: #fff;
+      border-radius: 2px;
+      transition: all var(--transition);
+    }
+
+    .nav__mobile {
+      display: none;
+      flex-direction: column;
+      background: var(--navy);
+      border-top: 1px solid rgba(255,255,255,.1);
+      padding: 16px 20px 24px;
+    }
+    .nav__mobile.open { display: flex; }
+    .nav__mobile a {
+      color: rgba(255,255,255,.8);
+      font-size: 14px;
+      font-weight: 500;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      transition: color var(--transition);
+    }
+    .nav__mobile a:hover { color: var(--gold); }
+
+    /* ══════════════════════════════════
+       HERO
+    ══════════════════════════════════ */
+    .hero {
+      min-height: 650px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      background-image: url('assets/images/hero-banner.png');
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(at center center, rgba(30,15,15,.48) 0%, rgba(1,19,66,.62) 100%);
+    }
+
+    .hero__content {
+      position: relative;
+      z-index: 2;
+      padding: 120px 20px 80px;
+      max-width: 800px;
+    }
+
+    .hero__title {
+      font-family: 'Marcellus', serif;
+      font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    .hero__sub {
+      font-size: 16px;
+      font-weight: 400;
+      color: rgba(255,255,255,.78);
+      max-width: 580px;
+      margin-inline: auto;
+      margin-bottom: 36px;
+      line-height: 1.75;
+    }
+
+    /* ══════════════════════════════════
+       ABOUT  (id="sobre")
+    ══════════════════════════════════ */
+    .about {
+      background-color: var(--white);
+      background-image: url('assets/images/sobre-nos.png');
+      background-size: cover;
+      background-position: center;
+      background-blend-mode: overlay;
+    }
+
+    .about__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .about__text .section-title { color: var(--navy); }
+
+    .about__text p {
+      font-size: 15px;
+      color: var(--text);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    .about__text p strong { color: var(--navy); font-weight: 600; }
+
+    .about__image img {
+      width: 100%;
+      height: 550px;
+      object-fit: cover;
+      object-position: top center;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    /* ══════════════════════════════════
+       SERVICES  (id="areasdeatuacao")
+    ══════════════════════════════════ */
+    .services { background: var(--bg); }
+
+    .services__header { text-align: center; margin-bottom: 52px; }
+    .services__header .section-tag { justify-content: center; }
+    .services__header .section-sub { margin-inline: auto; }
+
+    .services__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .service-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 36px 28px;
+      box-shadow: 0 2px 12px rgba(0,0,0,.06);
+      transition: all var(--transition);
+      border-top: 3px solid transparent;
+      cursor: default;
+    }
+
+    .service-card:hover {
+      border-top-color: var(--gold);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .service-card__icon {
+      width: 44px;
+      height: 44px;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .service-card__title {
+      font-family: 'Marcellus', serif;
+      font-size: 1.1rem;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+
+    .service-card__desc {
+      font-size: 14px;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* ══════════════════════════════════
+       BLOG
+    ══════════════════════════════════ */
+    .blog { background: var(--white); }
+    .blog__header { margin-bottom: 40px; }
+
+    .blog__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .blog-card {
+      background: var(--bg);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: all var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .blog-card:hover {
+      box-shadow: var(--shadow);
+      transform: translateY(-3px);
+    }
+
+    .blog-card__img-wrap { overflow: hidden; }
+
+    .blog-card__img {
+      width: 100%;
+      height: 175px;
+      object-fit: cover;
+      transition: transform 400ms ease;
+    }
+
+    .blog-card:hover .blog-card__img { transform: scale(1.05); }
+
+    .blog-card__body { padding: 18px 20px 22px; flex: 1; display: flex; flex-direction: column; }
+
+    .blog-card__cat {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .blog-card__title {
+      font-family: 'Marcellus', serif;
+      font-size: .95rem;
+      color: var(--navy);
+      line-height: 1.45;
+      margin-bottom: 14px;
+      flex: 1;
+    }
+
+    .blog-card__link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--gold);
+      margin-top: auto;
+      transition: gap var(--transition);
+      cursor: pointer;
+    }
+    .blog-card:hover .blog-card__link { gap: 10px; }
+    .blog-card__link svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+    .blog__cta { text-align: center; margin-top: 40px; }
+
+    /* ══════════════════════════════════
+       TEAM HEADER
+    ══════════════════════════════════ */
+    .team-header {
+      background: var(--navy);
+      padding-block: 72px 0;
+      text-align: center;
+    }
+    .team-header .section-tag { color: var(--gold-light); justify-content: center; }
+    .team-header .section-tag::before { background: var(--gold-light); }
+    .team-header .section-title { color: var(--white); }
+    .team-header .section-sub { color: rgba(255,255,255,.6); margin-inline: auto; text-align: center; }
+
+    /* ══════════════════════════════════
+       TEAM  (id="equipe")
+    ══════════════════════════════════ */
+    .team { background: var(--navy); padding-top: 52px; }
+
+    .team__grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+
+    .team-card {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .team-card:hover {
+      border-color: rgba(201,151,58,.45);
+      box-shadow: 0 12px 40px rgba(0,0,0,.35);
+      transform: translateY(-4px);
+    }
+
+    /* Photo frame with name overlay */
+    .team-card__photo {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .team-card__img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      transition: transform 500ms ease;
+    }
+
+    .team-card:hover .team-card__img { transform: scale(1.04); }
+
+    .team-card__overlay {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 48px 28px 24px;
+      background: linear-gradient(to top, rgba(1,19,66,.95) 0%, transparent 100%);
+    }
+
+    .team-card__name {
+      font-family: 'Marcellus', serif;
+      font-size: 1.55rem;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .team-card__role {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* Bio area */
+    .team-card__body {
+      padding: 24px 28px 28px;
+      flex: 1;
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+
+    .team-card__bio {
+      font-size: 13.5px;
+      color: rgba(255,255,255,.6);
+      line-height: 1.8;
+    }
+
+    /* ══════════════════════════════════
+       TESTIMONIALS
+    ══════════════════════════════════ */
+    .testimonials { background: var(--navy); overflow: hidden; }
+    .testimonials .section-title { color: var(--white); }
+    .testimonials .section-sub { color: rgba(255,255,255,.65); }
+    .testimonials .section-tag { color: var(--gold-light); }
+    .testimonials .section-tag::before { background: var(--gold-light); }
+
+    .testimonials__wrap { margin-top: 48px; }
+
+    .testimonials__slider {
+      display: flex;
+      gap: 24px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      cursor: grab;
+      user-select: none;
+      padding-bottom: 4px;
+    }
+    .testimonials__slider::-webkit-scrollbar { display: none; }
+    .testimonials__slider.dragging { cursor: grabbing; }
+
+    .tcard {
+      flex: 0 0 340px;
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      scroll-snap-align: start;
+    }
+
+    .tcard__stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 16px;
+    }
+
+    .tcard__stars svg { width: 15px; height: 15px; fill: var(--gold); }
+
+    .tcard__text {
+      font-size: 13.5px;
+      color: rgba(255,255,255,.78);
+      line-height: 1.75;
+      margin-bottom: 20px;
+    }
+
+    .tcard__author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-top: 1px solid rgba(255,255,255,.1);
+      padding-top: 16px;
+    }
+
+    .tcard__avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Marcellus', serif;
+      font-size: 14px;
+      color: var(--white);
+      flex-shrink: 0;
+    }
+
+    .tcard__name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--white);
+    }
+
+    .tcard__source {
+      font-size: 11px;
+      color: rgba(255,255,255,.45);
+    }
+
+    .testimonials__nav {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .testimonials__dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.25);
+      cursor: pointer;
+      transition: background var(--transition);
+      border: none;
+    }
+    .testimonials__dot.active { background: var(--gold); }
+
+    /* ══════════════════════════════════
+       QUOTE
+    ══════════════════════════════════ */
+    .quote { background: var(--gold-pale); padding-block: 72px; text-align: center; }
+
+    .quote blockquote {
+      font-family: 'Marcellus', serif;
+      font-size: clamp(1.3rem, 2.8vw, 2rem);
+      color: var(--navy);
+      max-width: 820px;
+      margin-inline: auto;
+      line-height: 1.55;
+    }
+
+    .quote cite {
+      display: block;
+      font-style: normal;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 24px;
+    }
+
+    /* ══════════════════════════════════
+       CONTACT  (id="contato")
+    ══════════════════════════════════ */
+    .contact { background: var(--white); }
+    .contact__header { margin-bottom: 44px; }
+
+    .contact__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+
+    .contact__map iframe {
+      width: 100%;
+      height: 380px;
+      border: none;
+      border-radius: var(--radius);
+      display: block;
+      box-shadow: var(--shadow);
+    }
+
+    .contact__item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .contact__item:first-child { border-top: 1px solid var(--border); }
+
+    .contact__item svg {
+      width: 18px;
+      height: 18px;
+      color: var(--gold);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .contact__item-body {
+      font-size: 14px;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .contact__item-body a {
+      color: var(--navy);
+      font-weight: 500;
+      transition: color var(--transition);
+    }
+    .contact__item-body a:hover { color: var(--gold); }
+
+    .contact__right h3 {
+      font-family: 'Marcellus', serif;
+      font-size: 1.5rem;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+
+    .contact__right > p {
+      font-size: 14px;
+      color: var(--text);
+      margin-bottom: 28px;
+    }
+
+    /* ══════════════════════════════════
+       FOOTER
+    ══════════════════════════════════ */
+    .footer { background: var(--navy); padding-block: 56px 28px; }
+
+    .footer__grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1.2fr;
+      gap: 40px;
+      padding-bottom: 44px;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+
+    .footer__logo { height: 36px; margin-bottom: 18px; filter: brightness(0) invert(1); }
+
+    .footer__tagline {
+      font-size: 14px;
+      color: rgba(255,255,255,.55);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .footer__socials { display: flex; gap: 10px; }
+
+    .footer__social {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,.55);
+      transition: all var(--transition);
+      cursor: pointer;
+    }
+    .footer__social:hover { border-color: var(--gold); color: var(--gold); }
+    .footer__social svg { width: 15px; height: 15px; fill: currentColor; }
+
+    .footer__col-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.4);
+      margin-bottom: 18px;
+    }
+
+    .footer__links { display: flex; flex-direction: column; gap: 9px; }
+
+    .footer__links a {
+      font-size: 14px;
+      color: rgba(255,255,255,.6);
+      transition: color var(--transition);
+    }
+    .footer__links a:hover { color: var(--gold); }
+
+    .footer__bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding-top: 24px;
+    }
+
+    .footer__copyright {
+      font-size: 13px;
+      color: rgba(255,255,255,.35);
+    }
+
+    .footer__legal { display: flex; gap: 20px; }
+
+    .footer__legal a {
+      font-size: 13px;
+      color: rgba(255,255,255,.35);
+      transition: color var(--transition);
+    }
+    .footer__legal a:hover { color: rgba(255,255,255,.7); }
+
+    /* ══════════════════════════════════
+       WHATSAPP FLOAT
+    ══════════════════════════════════ */
+    .wa-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 50;
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: #25D366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 18px rgba(37,211,102,.45);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .wa-btn:hover { transform: scale(1.1); box-shadow: 0 6px 24px rgba(37,211,102,.6); }
+    .wa-btn svg { width: 28px; height: 28px; fill: #fff; }
+
+    /* ══════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════ */
+    @media (max-width: 1024px) {
+      .about__grid { grid-template-columns: 1fr; gap: 40px; }
+      .about__image img { height: 400px; }
+      .services__grid { grid-template-columns: repeat(2, 1fr); }
+      .blog__grid { grid-template-columns: repeat(2, 1fr); }
+      .contact__grid { grid-template-columns: 1fr; }
+      .footer__grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .section { padding-block: 56px; }
+      .nav__menu, .nav__socials { display: none; }
+      .nav__toggle { display: flex; }
+      .services__grid { grid-template-columns: 1fr; }
+      .blog__grid { grid-template-columns: 1fr; }
+      .team__grid { grid-template-columns: 1fr; }
+      .team-card__img { height: 300px; }
+      .footer__grid { grid-template-columns: 1fr; }
+      .footer__bottom { flex-direction: column; text-align: center; }
+    }
+
+    @media (max-width: 480px) {
+      .hero__title { font-size: 1.9rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav class="nav" id="nav" role="navigation" aria-label="Site navigation">
+  <div class="container">
+    <div class="nav__inner">
+      <a href="#home" class="nav__logo" aria-label="Patrícia Viana — Home">
+        <img src="assets/images/logo.png" alt="Patrícia Viana Law Firm logo" />
+      </a>
+
+      <ul class="nav__menu" role="list">
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#sobre">About Us</a></li>
+        <li><a href="#areasdeatuacao">Services</a></li>
+        <li><a href="#equipe">Team</a></li>
+        <li><a href="https://vianaconsultancy.com/blog/" target="_blank" rel="noopener">Blog</a></li>
+        <li><a href="#contato">Contact</a></li>
+      </ul>
+
+      <div class="nav__socials" aria-label="Social media">
+        <a href="https://www.instagram.com/patricia_viana_lawyer" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+        </a>
+        <a href="http://wa.me/351960174940" target="_blank" rel="noopener" aria-label="WhatsApp">
+          <svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=100087269040601" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg>
+        </a>
+      </div>
+
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <nav class="nav__mobile" id="navMobile" aria-label="Mobile navigation">
+    <a href="#home">Home</a>
+    <a href="#sobre">About Us</a>
+    <a href="#areasdeatuacao">Services</a>
+    <a href="#equipe">Team</a>
+    <a href="https://vianaconsultancy.com/blog/" target="_blank" rel="noopener">Blog</a>
+    <a href="#contato">Contact</a>
+  </nav>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero" id="home" aria-label="Hero">
+  <div class="hero__content">
+    <h1 class="hero__title">A Worry-Free Future Awaits You</h1>
+    <p class="hero__sub">Our mission is to simplify the immigration process, ensuring you can focus on starting your new life in Portugal without stress.</p>
+    <a href="https://vianaconsultancy.com/contact/" class="btn btn-gold" target="_blank" rel="noopener">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      Book Your Consultation
+    </a>
+  </div>
+</section>
+
+<!-- ══ ABOUT ══ -->
+<section class="about section section--white" id="sobre" aria-label="About us">
+  <div class="container">
+    <div class="about__grid">
+      <div class="about__text">
+        <div class="section-tag">About Us</div>
+        <h2 class="section-title">Patrícia Viana<br>Law Firm</h2>
+        <p>
+          <strong>Was established in 2022 with a mission to simplify the immigration process for clients worldwide.</strong> As a team of qualified Portuguese attorneys, we specialize in providing personalized legal support to help you navigate the complexities of moving to Portugal. Whether you're seeking residency, citizenship, or simply need guidance on legal matters, our expertise ensures a smooth transition to your new life.
+        </p>
+        <p>
+          At Patrícia Viana Law Firm, we pride ourselves on our deep understanding of Portuguese immigration law, allowing us to offer accurate and efficient solutions tailored to your unique needs. Our clients trust us for our dedication, professionalism, and commitment to making their dreams of living in Portugal a reality.
+        </p>
+      </div>
+      <div class="about__image">
+        <img
+          src="assets/images/patricia-photo.jpg"
+          alt="Patrícia Viana, founding attorney"
+          loading="lazy"
+          width="683"
+          height="1024"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SERVICES ══ -->
+<section class="services section" id="areasdeatuacao" aria-label="Our services">
+  <div class="container">
+    <div class="services__header">
+      <div class="section-tag">What We Do</div>
+      <h2 class="section-title">Our Services</h2>
+      <p class="section-sub">Drawing from our extensive experience working with clients of diverse nationalities, we've been able to develop new strategies and services tailored to meet their unique needs.</p>
+    </div>
+
+    <div class="services__grid" role="list">
+
+      <div class="service-card" role="listitem">
+        <svg class="service-card__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+        </svg>
+        <h3 class="service-card__title">Consultations</h3>
+        <p class="service-card__desc">Receive expert advice on planning your move to Portugal, tailored to your individual needs and goals.</p>
+      </div>
+
+      <div class="service-card" role="listitem">
+        <svg class="service-card__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>
+        </svg>
+        <h3 class="service-card__title">Legal Residency Permits</h3>
+        <p class="service-card__desc">Comprehensive guidance and support to help you obtain your legal residency permit in Portugal.</p>
+      </div>
+
+      <div class="service-card" role="listitem">
+        <svg class="service-card__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+        </svg>
+        <h3 class="service-card__title">Certified Translations</h3>
+        <p class="service-card__desc">Our team delivers precise and legally recognized translations for official documents, ensuring global acceptance by authorities.</p>
+      </div>
+
+      <div class="service-card" role="listitem">
+        <svg class="service-card__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+        <h3 class="service-card__title">Litigations</h3>
+        <p class="service-card__desc">We handle litigation cases with expertise, safeguarding your rights and striving for the best possible outcomes in court.</p>
+      </div>
+
+      <div class="service-card" role="listitem">
+        <svg class="service-card__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+        </svg>
+        <h3 class="service-card__title">Visa Application Assistance</h3>
+        <p class="service-card__desc">We streamline the visa application process, ensuring accuracy and efficiency every step of the way.</p>
+      </div>
+
+      <div class="service-card" role="listitem">
+        <svg class="service-card__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+        </svg>
+        <h3 class="service-card__title">Company Incorporation</h3>
+        <p class="service-card__desc">We assist in incorporating your company, ensuring legal compliance and maximizing tax benefits to optimize your business.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ BLOG ══ -->
+<section class="blog section section--white" id="blog" aria-label="Blog">
+  <div class="container">
+    <div class="blog__header">
+      <div class="section-tag">Insights</div>
+      <h2 class="section-title">Blog</h2>
+      <p class="section-sub">Be sure to check out the latest posts on our blog</p>
+    </div>
+
+    <div class="blog__grid">
+
+      <article class="blog-card">
+        <div class="blog-card__img-wrap">
+          <img class="blog-card__img" src="assets/images/blog-ifici.png" alt="IFICI Portugal article" loading="lazy" />
+        </div>
+        <div class="blog-card__body">
+          <div class="blog-card__cat">Blog</div>
+          <h3 class="blog-card__title">IFICI Portugal: Strategic Tax Incentive for D7 &amp; D8 Visa Holders</h3>
+          <a href="https://vianaconsultancy.com/elementor-2700/" class="blog-card__link" target="_blank" rel="noopener" aria-label="Read IFICI Portugal article">
+            Read More
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <div class="blog-card__img-wrap">
+          <img class="blog-card__img" src="assets/images/blog-immigration.png" alt="Portugal immigration delays article" loading="lazy" />
+        </div>
+        <div class="blog-card__body">
+          <div class="blog-card__cat">Blog</div>
+          <h3 class="blog-card__title">Why Portugal Immigration Delays Are Getting Worse — and How a Visa Might Be Your Best Option</h3>
+          <a href="https://vianaconsultancy.com/why-portugal-immigration-delays-are-getting-worse-and-how-a-visa-might-be-your-best-option/" class="blog-card__link" target="_blank" rel="noopener" aria-label="Read immigration delays article">
+            Read More
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <div class="blog-card__img-wrap">
+          <img class="blog-card__img" src="assets/images/blog-goa.jpg" alt="Portuguese Nationality for Goans article" loading="lazy" />
+        </div>
+        <div class="blog-card__body">
+          <div class="blog-card__cat">Blog · Immigration</div>
+          <h3 class="blog-card__title">Portuguese Nationality for Goans: A Historic Opportunity Within Reach</h3>
+          <a href="https://vianaconsultancy.com/portuguese-nationality-for-goans-a-historic-opportunity-within-reach/" class="blog-card__link" target="_blank" rel="noopener" aria-label="Read Portuguese nationality for Goans article">
+            Read More
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <div class="blog-card__img-wrap">
+          <img class="blog-card__img" src="assets/images/consulting-lawyer.jpg" alt="Portugal Golden Visa article" loading="lazy" />
+        </div>
+        <div class="blog-card__body">
+          <div class="blog-card__cat">Blog</div>
+          <h3 class="blog-card__title">Portugal: The Ideal Destination for Investors and the Golden Visa | Discover the Advantages of Establishing an Offshore Company in Portugal</h3>
+          <a href="https://vianaconsultancy.com/portugal-the-ideal-destination-for-investors-and-the-golden-visa-discover-the-advantages-of-establishing-an-offshore-company-in-portugal/" class="blog-card__link" target="_blank" rel="noopener" aria-label="Read Portugal Golden Visa article">
+            Read More
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="blog__cta">
+      <a href="https://vianaconsultancy.com/blog/" class="btn btn-outline-gold" target="_blank" rel="noopener">
+        View All
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TEAM HEADER ══ -->
+<div class="team-header" aria-label="Team section header">
+  <div class="container">
+    <div class="section-tag">Our People</div>
+    <h2 class="section-title">Our Team</h2>
+    <p class="section-sub">We have a professional team that is specialized in what it does</p>
+  </div>
+</div>
+
+<!-- ══ TEAM ══ -->
+<section class="team section" id="equipe" aria-label="Meet the team">
+  <div class="container">
+    <div class="team__grid">
+
+      <div class="team-card">
+        <div class="team-card__photo">
+          <img
+            class="team-card__img"
+            src="assets/images/patricia-viana-profile.png"
+            alt="Patrícia Viana — Founder and Lead Attorney"
+            loading="lazy"
+          />
+          <div class="team-card__overlay">
+            <h3 class="team-card__name">Patrícia Viana</h3>
+            <div class="team-card__role">Founder &amp; Lead Attorney</div>
+          </div>
+        </div>
+        <div class="team-card__body">
+          <p class="team-card__bio">Patricia Viana has a bachelor's degree in law from the Pontifical Catholic University and is an attorney licensed in Portugal and Brazil. She does have great experience in Administrative Litigation. In 2023, she did the course of Administrative Litigation applied to Portuguese nationality and concluded the postgraduate studies in Administrative and Fiscal Litigation in Portugal. In the year 2024, she has already participated in over one hundred judicial cases about foreign nationals. She speaks fluent Portuguese, English, and Spanish and is now studying French.</p>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-card__photo">
+          <img
+            class="team-card__img"
+            src="assets/images/bruna-xavier-profile.png"
+            alt="Bruna Xavier — Assistant Attorney"
+            loading="lazy"
+          />
+          <div class="team-card__overlay">
+            <h3 class="team-card__name">Bruna Xavier</h3>
+            <div class="team-card__role">Assistant Attorney</div>
+          </div>
+        </div>
+        <div class="team-card__body">
+          <p class="team-card__bio">Bruna Xavier is also an attorney enrolled with the Portuguese Bar Association, specializing in Administrative and Criminal Law. She has contributed quite actively to the procedural management of our firm.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ TESTIMONIALS ══ -->
+<section class="testimonials section" aria-label="Client testimonials">
+  <div class="container">
+    <div class="section-tag">What Clients Say</div>
+    <h2 class="section-title">Feedback</h2>
+    <p class="section-sub">Check out what our clients have to say about their experience with us.</p>
+
+    <div class="testimonials__wrap">
+      <div class="testimonials__slider" id="tSlider" role="list">
+
+        <div class="tcard" role="listitem">
+          <div class="tcard__stars" aria-label="5 out of 5 stars">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="tcard__text">I highly recommend Patricia, an exceptional immigration lawyer who impressed me with her professionalism, warmth, and extensive expertise. She went above and beyond to assist me, helping me obtain my NIF number and open a bank account. Patricia's deep knowledge of Portuguese immigration laws was invaluable, guiding me through the process with clarity and ease. Her adeptness at bridging language barriers by providing translation services was immensely helpful, ensuring effective communication throughout. Thank you, Patricia!</p>
+          <div class="tcard__author">
+            <div class="tcard__avatar" aria-hidden="true">H</div>
+            <div>
+              <div class="tcard__name">Hendranus Vermeulen</div>
+              <div class="tcard__source">Google Review</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tcard" role="listitem">
+          <div class="tcard__stars" aria-label="5 out of 5 stars">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="tcard__text">Excellent lawyer. She helped me obtain the residence card within 25 days. I will never forget your kindness. Thank you very much.</p>
+          <div class="tcard__author">
+            <div class="tcard__avatar" aria-hidden="true">G</div>
+            <div>
+              <div class="tcard__name">Gala Oussama</div>
+              <div class="tcard__source">Google Review</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tcard" role="listitem">
+          <div class="tcard__stars" aria-label="5 out of 5 stars">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="tcard__text">From the beginning, very helpful, a unique professional, I recommend his work. We need more professionals like this, of excellence! Very satisfied.</p>
+          <div class="tcard__author">
+            <div class="tcard__avatar" aria-hidden="true">N</div>
+            <div>
+              <div class="tcard__name">Nazim Uddin</div>
+              <div class="tcard__source">Google Review</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tcard" role="listitem">
+          <div class="tcard__stars" aria-label="5 out of 5 stars">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="tcard__text">Muito obrigado, consegui minha residência de volta, graças a você.</p>
+          <div class="tcard__author">
+            <div class="tcard__avatar" aria-hidden="true">R</div>
+            <div>
+              <div class="tcard__name">Rabah Touamen</div>
+              <div class="tcard__source">Google Review</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tcard" role="listitem">
+          <div class="tcard__stars" aria-label="5 out of 5 stars">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="tcard__text">Excellent service.. really I recommend for others.. Thank you very much.</p>
+          <div class="tcard__author">
+            <div class="tcard__avatar" aria-hidden="true">R</div>
+            <div>
+              <div class="tcard__name">Rehan Khan</div>
+              <div class="tcard__source">Google Review</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tcard" role="listitem">
+          <div class="tcard__stars" aria-label="5 out of 5 stars">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="tcard__text">I had the honor to work with you as my lawyer, all the best for you.</p>
+          <div class="tcard__author">
+            <div class="tcard__avatar" aria-hidden="true">D</div>
+            <div>
+              <div class="tcard__name">Dja Mel</div>
+              <div class="tcard__source">Google Review</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="testimonials__nav" aria-label="Testimonials navigation" role="group">
+        <button class="testimonials__dot active" aria-label="Review 1" data-index="0"></button>
+        <button class="testimonials__dot" aria-label="Review 2" data-index="1"></button>
+        <button class="testimonials__dot" aria-label="Review 3" data-index="2"></button>
+        <button class="testimonials__dot" aria-label="Review 4" data-index="3"></button>
+        <button class="testimonials__dot" aria-label="Review 5" data-index="4"></button>
+        <button class="testimonials__dot" aria-label="Review 6" data-index="5"></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ QUOTE ══ -->
+<div class="quote" aria-label="Quote">
+  <div class="container">
+    <blockquote>
+      "Immigration is not just about moving to a new country; it's about building a new life and embracing new possibilities."
+    </blockquote>
+    <cite>–</cite>
+  </div>
+</div>
+
+<!-- ══ CONTACT ══ -->
+<section class="contact section section--white" id="contato" aria-label="Contact">
+  <div class="container">
+    <div class="contact__header">
+      <div class="section-tag">Get in Touch</div>
+      <h2 class="section-title">Contact</h2>
+    </div>
+
+    <div class="contact__grid">
+      <div class="contact__map">
+        <iframe
+          src="https://maps.google.com/maps?q=Av.%20Elias%20Garcia%2C%20123-A%2C%201050-098%2C%20Lisboa&t=m&z=16&output=embed&iwloc=near"
+          title="Av. Elias Garcia, 123-A, 1050-098, Lisboa"
+          aria-label="Office location map"
+          loading="lazy"
+        ></iframe>
+      </div>
+
+      <div class="contact__right">
+        <h3>Get in Touch</h3>
+        <p>We're here to help you start your new chapter in Portugal.</p>
+
+        <div role="list">
+          <div class="contact__item" role="listitem">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.8 12.8a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.71 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.15 6.15l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <div class="contact__item-body">
+              <a href="tel:+351960174940">+351 960 174 940</a><br>
+              <span style="font-size:12px;color:var(--text);">Call to national mobile network</span>
+            </div>
+          </div>
+          <div class="contact__item" role="listitem">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" aria-hidden="true" style="width:18px;height:18px;color:var(--gold);flex-shrink:0;margin-top:2px;"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+            <div class="contact__item-body">
+              <a href="http://wa.me/351960174940" target="_blank" rel="noopener">+351 960 174 940</a><br>
+              <span style="font-size:12px;color:var(--text);">WhatsApp</span>
+            </div>
+          </div>
+          <div class="contact__item" role="listitem">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <div class="contact__item-body">
+              <a href="mailto:enquiries@vianaconsultancy.com">enquiries@vianaconsultancy.com</a>
+            </div>
+          </div>
+          <div class="contact__item" role="listitem">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div class="contact__item-body">
+              <a href="https://www.google.com/maps/dir//Av.+Elias+Garcia+123A,+1050-031+Lisboa" target="_blank" rel="noopener">
+                Av. Elias Garcia, 123-A, 1050-098, Lisboa.
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__grid">
+
+      <div>
+        <img src="assets/images/logo.png" alt="Patrícia Viana Law Firm" class="footer__logo" />
+        <p class="footer__tagline">If it's important to you, it's important to us!</p>
+        <div class="footer__socials" aria-label="Social media links">
+          <a href="https://www.facebook.com/profile.php?id=100087269040601" class="footer__social" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg viewBox="0 0 512 512"><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/patricia_viana_lawyer/" class="footer__social" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+          </a>
+          <a href="http://wa.me/351960174940" class="footer__social" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <svg viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="footer__col-title">Institutional</h4>
+        <ul class="footer__links" role="list">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#sobre">About us</a></li>
+          <li><a href="#areasdeatuacao">Services</a></li>
+          <li><a href="#equipe">Team</a></li>
+          <li><a href="https://vianaconsultancy.com/blog/" target="_blank" rel="noopener">Blog</a></li>
+          <li><a href="#contato">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer__col-title">Services</h4>
+        <ul class="footer__links" role="list">
+          <li><a href="#areasdeatuacao">Consultation</a></li>
+          <li><a href="#areasdeatuacao">Legal Residency Permits</a></li>
+          <li><a href="#areasdeatuacao">Certified Translations</a></li>
+          <li><a href="#areasdeatuacao">Litigations</a></li>
+          <li><a href="#areasdeatuacao">Visa Application Assistance</a></li>
+          <li><a href="#areasdeatuacao">Company Incorporation</a></li>
+          <li><a href="#areasdeatuacao">Administrative Law</a></li>
+          <li><a href="#areasdeatuacao">Tax Law</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer__bottom">
+      <p class="footer__copyright">Patrícia Viana Lawyer Copyright ® 2024 - All rights reserved.</p>
+      <nav class="footer__legal" aria-label="Legal links">
+        <a href="https://vianaconsultancy.com/politica-de-privacidade/" target="_blank" rel="noopener">Privacy Policy</a>
+        <a href="https://vianaconsultancy.com/terms-conditions/" target="_blank" rel="noopener">Terms &amp; Conditions</a>
+        <a href="https://vianaconsultancy.com/politica-de-privacidade/" target="_blank" rel="noopener">Cookie Policy</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<!-- ══ WHATSAPP FLOAT ══ -->
+<a class="wa-btn" href="http://wa.me/351960174940" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+  </svg>
+</a>
+
+<script>
+  // Nav: transparent on hero, solid when scrolled
+  const nav = document.getElementById('nav');
+  const updateNav = () => nav.classList.toggle('scrolled', window.scrollY > 40);
+  window.addEventListener('scroll', updateNav, { passive: true });
+  updateNav();
+
+  // Active nav links on scroll
+  const sections = document.querySelectorAll('section[id], div[id="home"]');
+  const navLinks = document.querySelectorAll('.nav__menu a');
+  window.addEventListener('scroll', () => {
+    let current = 'home';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 110) current = s.id;
+    });
+    navLinks.forEach(a => {
+      const href = a.getAttribute('href');
+      a.classList.toggle('active', href === '#' + current);
+    });
+  }, { passive: true });
+
+  // Mobile menu toggle
+  const toggle = document.getElementById('navToggle');
+  const mobile = document.getElementById('navMobile');
+  toggle.addEventListener('click', () => {
+    const open = mobile.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(open));
+  });
+  mobile.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      mobile.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Smooth scroll with fixed nav offset
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (!target) return;
+      e.preventDefault();
+      window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 75, behavior: 'smooth' });
+    });
+  });
+
+  // Testimonials: dot navigation
+  const slider = document.getElementById('tSlider');
+  const dots = document.querySelectorAll('.testimonials__dot');
+  const CARD_W = 340 + 24; // card width + gap
+
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      slider.scrollTo({ left: +dot.dataset.index * CARD_W, behavior: 'smooth' });
+      dots.forEach(d => d.classList.remove('active'));
+      dot.classList.add('active');
+    });
+  });
+
+  slider.addEventListener('scroll', () => {
+    const i = Math.round(slider.scrollLeft / CARD_W);
+    dots.forEach((d, idx) => d.classList.toggle('active', idx === i));
+  }, { passive: true });
+
+  // Drag-to-scroll for testimonials
+  let isDown = false, startX, scrollL;
+  slider.addEventListener('mousedown', e => {
+    isDown = true;
+    slider.classList.add('dragging');
+    startX = e.pageX - slider.offsetLeft;
+    scrollL = slider.scrollLeft;
+  });
+  slider.addEventListener('mouseleave', () => { isDown = false; slider.classList.remove('dragging'); });
+  slider.addEventListener('mouseup', () => { isDown = false; slider.classList.remove('dragging'); });
+  slider.addEventListener('mousemove', e => {
+    if (!isDown) return;
+    e.preventDefault();
+    slider.scrollLeft = scrollL - (e.pageX - slider.offsetLeft - startX);
+  });
+</script>
+</body>
+</html>
