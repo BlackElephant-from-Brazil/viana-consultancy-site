@@ -1,4 +1,6 @@
 import { getStore } from '@netlify/blobs'
+import fs from 'fs'
+import path from 'path'
 
 export type Post = {
   slug: string
@@ -12,8 +14,55 @@ export type Post = {
   coverImage?: string
 }
 
-function store() {
-  return getStore('posts')
+// Minimal interface matching the Netlify Blobs store API
+interface BlobStore {
+  get(key: string, opts?: { type?: string }): Promise<unknown>
+  set(key: string, value: string): Promise<void>
+  delete(key: string): Promise<void>
+}
+
+// Local file-based fallback used when Netlify Blobs is unavailable (npm run dev)
+const DEV_STORE_PATH = path.join(process.cwd(), '.dev-blobs.json')
+
+function readDevStore(): Record<string, string> {
+  try {
+    return JSON.parse(fs.readFileSync(DEV_STORE_PATH, 'utf8'))
+  } catch {
+    return {}
+  }
+}
+
+function writeDevStore(data: Record<string, string>): void {
+  fs.writeFileSync(DEV_STORE_PATH, JSON.stringify(data, null, 2))
+}
+
+function devFileStore(): BlobStore {
+  return {
+    async get(key: string, opts?: { type?: string }): Promise<unknown> {
+      const data = readDevStore()
+      const val = data[key]
+      if (val === undefined) return null
+      return opts?.type === 'json' ? JSON.parse(val) : val
+    },
+    async set(key: string, value: string): Promise<void> {
+      const data = readDevStore()
+      data[key] = value
+      writeDevStore(data)
+    },
+    async delete(key: string): Promise<void> {
+      const data = readDevStore()
+      delete data[key]
+      writeDevStore(data)
+    },
+  }
+}
+
+function store(): BlobStore {
+  try {
+    return getStore('posts') as unknown as BlobStore
+  } catch {
+    return devFileStore()
+  }
 }
 
 function slugify(str: string): string {

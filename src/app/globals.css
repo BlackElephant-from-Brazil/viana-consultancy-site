@@ -250,7 +250,7 @@
       text-align: center;
       background-image: url('/images/hero-banner.png');
       background-size: cover;
-      background-position: center center;
+      background-position: left center;
       background-repeat: no-repeat;
     }
 
@@ -853,6 +853,7 @@
       .team-card__img { height: 300px; }
       .footer__grid { grid-template-columns: 1fr; }
       .footer__bottom { flex-direction: column; text-align: center; }
+      .hero { background-position: -300px center; }
     }
 
     @media (max-width: 480px) {
