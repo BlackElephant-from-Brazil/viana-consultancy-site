@@ -15,7 +15,9 @@
     "moduleNameMapper": {
       "^@/(.*)$": "<rootDir>/src/$1"
     },
-    "testMatch": ["<rootDir>/src/__tests__/**/*.test.ts"]
+    "testMatch": [
+      "<rootDir>/src/__tests__/**/*.test.ts"
+    ]
   },
   "dependencies": {
     "@netlify/blobs": "^10.7.9",
@@ -29,6 +31,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@netlify/plugin-nextjs": "^5.15.11",
     "@types/bcryptjs": "^3.0.0",
     "@types/jest": "^30.0.0",
     "@types/node": "^20",
