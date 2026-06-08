@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { Eye, EyeOff, Pencil, Trash2, ExternalLink } from 'lucide-react'
 import type { Post } from '@/lib/posts'
@@ -19,7 +18,6 @@ function formatDate(d: string) {
 }
 
 export default function PostsTable({ initialPosts }: { initialPosts: Post[] }) {
-  const router = useRouter()
   const [posts, setPosts] = useState(initialPosts)
   const [toast, setToast] = useState<{ msg: string; type: 'success' | 'error' } | null>(null)
   const [loadingSlug, setLoadingSlug] = useState<string | null>(null)

@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import { getPublishedPosts } from '@/lib/posts'
 import BlogCard from '@/components/blog/BlogCard'
 
@@ -10,7 +9,7 @@ export const metadata = {
 }
 
 export default async function BlogPage() {
-  let posts = await getPublishedPosts().catch(() => [])
+  const posts = await getPublishedPosts().catch(() => [])
 
   return (
     <>

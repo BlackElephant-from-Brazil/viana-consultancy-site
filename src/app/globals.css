@@ -248,7 +248,7 @@
       position: relative;
       overflow: hidden;
       text-align: center;
-      background-image: url('assets/images/hero-banner.png');
+      background-image: url('/images/hero-banner.png');
       background-size: cover;
       background-position: center center;
       background-repeat: no-repeat;
@@ -291,7 +291,7 @@
     ══════════════════════════════════ */
     .about {
       background-color: var(--white);
-      background-image: url('assets/images/sobre-nos.png');
+      background-image: url('/images/sobre-nos.png');
       background-size: cover;
       background-position: center;
       background-blend-mode: overlay;
