@@ -15,7 +15,7 @@
     "moduleNameMapper": {
       "^@/(.*)$": "<rootDir>/src/$1"
     },
-    "testPathPattern": "src/__tests__"
+    "testMatch": ["<rootDir>/src/__tests__/**/*.test.ts"]
   },
   "dependencies": {
     "@netlify/blobs": "^10.7.9",
