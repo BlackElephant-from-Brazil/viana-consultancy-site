@@ -194,7 +194,7 @@ function simpleMarkdownToHtml(md: string): string {
     .replace(/^> (.+)$/gm, '<blockquote>$1</blockquote>')
     .replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2">$1</a>')
     .replace(/^- (.+)$/gm, '<li>$1</li>')
-    .replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>')
+    .replace(/(<li>[\s\S]*<\/li>)/, '<ul>$1</ul>')
     .replace(/\n\n/g, '</p><p>')
     || '<p>' + md + '</p>'
 }
