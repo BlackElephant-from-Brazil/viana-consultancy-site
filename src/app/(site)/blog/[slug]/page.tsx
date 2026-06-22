@@ -1,15 +1,14 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import Image from 'next/image'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { getPostBySlug, getPublishedPosts } from '@/lib/posts'
+import { FAQ, FAQItem } from '@/components/blog/FAQ'
 
 export const dynamic = 'force-dynamic'
 
-export async function generateStaticParams() {
+export function generateStaticParams() {
   try {
-    const posts = await getPublishedPosts()
-    return posts.map(p => ({ slug: p.slug }))
+    return getPublishedPosts().map(p => ({ slug: p.slug }))
   } catch {
     return []
   }
@@ -19,21 +18,21 @@ function formatDate(date: string) {
   return new Date(date).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })
 }
 
+const mdxComponents = { FAQ, FAQItem }
+
 export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
-  const post = await getPostBySlug(slug).catch(() => null)
+  let post: ReturnType<typeof getPostBySlug> = null
+  try {
+    post = getPostBySlug(slug)
+  } catch {
+    post = null
+  }
   if (!post || !post.published) notFound()
 
   return (
     <>
-      {post.coverImage && (
-        <div style={{ width: '100%', height: 380, position: 'relative', marginTop: 72 }}>
-          <Image src={post.coverImage} alt={post.title} fill style={{ objectFit: 'cover' }} priority />
-          <div style={{ position: 'absolute', inset: 0, background: 'rgba(1,19,66,.4)' }} />
-        </div>
-      )}
-
-      <section className="section section--white" style={{ paddingTop: post.coverImage ? 48 : 120 }}>
+      <section className="section section--white" style={{ paddingTop: 120 }}>
         <div className="container" style={{ maxWidth: 760 }}>
           <Link href="/blog" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 13, color: 'var(--gold)', marginBottom: 32 }}>
             ← Back to Blog
@@ -54,7 +53,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           </p>
 
           <div className="post-content">
-            <MDXRemote source={post.content} />
+            <MDXRemote source={post.content} components={mdxComponents} />
           </div>
 
           <div style={{ borderTop: '1px solid var(--border)', marginTop: 60, paddingTop: 32, textAlign: 'center' }}>

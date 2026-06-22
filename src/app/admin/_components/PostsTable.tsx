@@ -4,14 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { Eye, EyeOff, Pencil, Trash2, ExternalLink } from 'lucide-react'
 import type { Post } from '@/lib/posts'
-
-function Toast({ msg, type }: { msg: string; type: 'success' | 'error' }) {
-  return (
-    <div className="toast-container">
-      <div className={`toast toast--${type}`}>{msg}</div>
-    </div>
-  )
-}
+import { useToasts, ToastViewport } from './Toast'
 
 function formatDate(d: string) {
   return new Date(d).toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric' })
@@ -19,13 +12,8 @@ function formatDate(d: string) {
 
 export default function PostsTable({ initialPosts }: { initialPosts: Post[] }) {
   const [posts, setPosts] = useState(initialPosts)
-  const [toast, setToast] = useState<{ msg: string; type: 'success' | 'error' } | null>(null)
+  const { toasts, addToast } = useToasts()
   const [loadingSlug, setLoadingSlug] = useState<string | null>(null)
-
-  const showToast = (msg: string, type: 'success' | 'error') => {
-    setToast({ msg, type })
-    setTimeout(() => setToast(null), 3000)
-  }
 
   const togglePublished = async (post: Post) => {
     setLoadingSlug(post.slug)
@@ -37,9 +25,9 @@ export default function PostsTable({ initialPosts }: { initialPosts: Post[] }) {
     setLoadingSlug(null)
     if (res.ok) {
       setPosts(prev => prev.map(p => p.slug === post.slug ? { ...p, published: !p.published } : p))
-      showToast(post.published ? 'Post unpublished.' : 'Post published.', 'success')
+      addToast(post.published ? 'Post unpublished.' : 'Post published.', 'success')
     } else {
-      showToast('Failed to update post.', 'error')
+      addToast('Failed to update post.', 'error')
     }
   }
 
@@ -50,15 +38,15 @@ export default function PostsTable({ initialPosts }: { initialPosts: Post[] }) {
     setLoadingSlug(null)
     if (res.ok) {
       setPosts(prev => prev.filter(p => p.slug !== post.slug))
-      showToast('Post deleted.', 'success')
+      addToast('Post deleted.', 'success')
     } else {
-      showToast('Failed to delete post.', 'error')
+      addToast('Failed to delete post.', 'error')
     }
   }
 
   return (
     <>
-      {toast && <Toast msg={toast.msg} type={toast.type} />}
+      <ToastViewport toasts={toasts} />
       <div style={{ overflowX: 'auto' }}>
         <table className="posts-table">
           <thead>

@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import Image from 'next/image'
 import type { Post } from '@/lib/posts'
 
 function formatDate(date: string) {
@@ -15,20 +14,6 @@ const ArrowRight = () => (
 export default function BlogCard({ post }: { post: Post }) {
   return (
     <article className="blog-card">
-      <div className="blog-card__img-wrap">
-        {post.coverImage ? (
-          <Image
-            className="blog-card__img"
-            src={post.coverImage}
-            alt={post.title}
-            width={600}
-            height={175}
-            style={{ objectFit: 'cover', height: 175, width: '100%' }}
-          />
-        ) : (
-          <div className="blog-card__img" style={{ background: 'linear-gradient(135deg, var(--navy) 0%, var(--gold) 100%)', height: 175 }} />
-        )}
-      </div>
       <div className="blog-card__body">
         <div className="blog-card__cat">
           {post.tags.slice(0, 2).join(' · ') || 'Blog'}

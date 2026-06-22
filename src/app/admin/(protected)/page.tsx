@@ -4,9 +4,13 @@ import PostsTable from '../_components/PostsTable'
 
 export const dynamic = 'force-dynamic'
 
-export default async function AdminDashboard() {
-  let posts = await getAllPosts().catch(() => [])
-  posts = posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+export default function AdminDashboard() {
+  let posts: ReturnType<typeof getAllPosts> = []
+  try {
+    posts = getAllPosts()
+  } catch {
+    posts = []
+  }
 
   return (
     <div className="container">

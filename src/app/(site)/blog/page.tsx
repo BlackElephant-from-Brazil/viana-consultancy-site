@@ -8,8 +8,13 @@ export const metadata = {
   description: 'Insights on Portuguese immigration law, residency, visas and more.',
 }
 
-export default async function BlogPage() {
-  const posts = await getPublishedPosts().catch(() => [])
+export default function BlogPage() {
+  let posts: ReturnType<typeof getPublishedPosts> = []
+  try {
+    posts = getPublishedPosts()
+  } catch {
+    posts = []
+  }
 
   return (
     <>

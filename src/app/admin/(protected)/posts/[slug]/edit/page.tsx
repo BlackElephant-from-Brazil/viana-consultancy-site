@@ -6,7 +6,12 @@ export const dynamic = 'force-dynamic'
 
 export default async function EditPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
-  const post = await getPostBySlug(slug).catch(() => null)
+  let post: ReturnType<typeof getPostBySlug> = null
+  try {
+    post = getPostBySlug(slug)
+  } catch {
+    post = null
+  }
   if (!post) notFound()
 
   return (

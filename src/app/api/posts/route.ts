@@ -6,7 +6,7 @@ export async function GET() {
   if (!(await requireAuth())) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }
-  const posts = await getAllPosts()
+  const posts = getAllPosts()
   return NextResponse.json(posts)
 }
 
@@ -18,6 +18,6 @@ export async function POST(req: NextRequest) {
   if (!data.title?.trim()) {
     return NextResponse.json({ error: 'Title is required' }, { status: 400 })
   }
-  const post = await createPost(data)
+  const post = createPost(data)
   return NextResponse.json(post, { status: 201 })
 }
