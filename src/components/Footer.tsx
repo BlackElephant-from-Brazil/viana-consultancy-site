@@ -45,6 +45,13 @@ export default function Footer() {
               <li><Link href="/#areasdeatuacao">Company Incorporation</Link></li>
             </ul>
           </div>
+
+          <p className="footer__made">
+            Made with ❤️ by{' '}
+            <a href="https://blackelephant.com.br/en" target="_blank" rel="noopener" className="footer__made-link">
+              BlackElephant
+            </a>
+          </p>
         </div>
 
         <div className="footer__bottom">

@@ -758,6 +758,18 @@
     .footer__social:hover { border-color: var(--gold); color: var(--gold); }
     .footer__social svg { width: 15px; height: 15px; fill: currentColor; }
 
+    .footer__made {
+      align-self: end;
+      font-size: 13px;
+      color: rgba(255,255,255,.55);
+    }
+
+    .footer__made-link {
+      font-weight: 700;
+      color: var(--gold);
+    }
+    .footer__made-link:hover { color: var(--gold); opacity: .8; }
+
     .footer__col-title {
       font-size: 11px;
       font-weight: 700;
