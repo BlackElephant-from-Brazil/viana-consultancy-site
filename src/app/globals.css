@@ -248,7 +248,7 @@
       position: relative;
       overflow: hidden;
       text-align: center;
-      background-image: url('/images/hero-banner.png');
+      background-image: url('/images/hero-banner.webp');
       background-size: cover;
       background-position: left center;
       background-repeat: no-repeat;
@@ -732,7 +732,7 @@
       border-bottom: 1px solid rgba(255,255,255,.1);
     }
 
-    .footer__logo { height: 36px; margin-bottom: 18px; filter: brightness(0) invert(1); }
+    .footer__logo { height: 36px; width: auto; margin-bottom: 18px; filter: brightness(0) invert(1); }
 
     .footer__tagline {
       font-size: 14px;
@@ -1073,7 +1073,7 @@
   gap: 24px;
 }
 
-.admin-header__logo { height: 32px; filter: brightness(0) invert(1); }
+.admin-header__logo { height: 32px; width: auto; filter: brightness(0) invert(1); }
 
 .admin-header__nav {
   display: flex;
@@ -1354,7 +1354,7 @@
   box-shadow: 0 24px 64px rgba(0,0,0,.4);
 }
 
-.login-card__logo { height: 40px; margin: 0 auto 32px; display: block; }
+.login-card__logo { height: 40px; width: auto; margin: 0 auto 32px; display: block; }
 
 .login-card h1 {
   font-family: 'Marcellus', serif;
