@@ -3,10 +3,13 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { usePathname } from 'next/navigation'
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const pathname = usePathname()
+  const isBlogPost = /^\/blog\/[^/]+$/.test(pathname ?? '')
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -18,7 +21,7 @@ export default function Nav() {
   const close = () => setMobileOpen(false)
 
   return (
-    <nav className={`nav${scrolled ? ' scrolled' : ''}`} id="nav" role="navigation" aria-label="Site navigation">
+    <nav className={`nav${(scrolled || isBlogPost) ? ' scrolled' : ''}`} id="nav" role="navigation" aria-label="Site navigation">
       <div className="container">
         <div className="nav__inner">
           <Link href="/" className="nav__logo" aria-label="Patrícia Viana — Home">
