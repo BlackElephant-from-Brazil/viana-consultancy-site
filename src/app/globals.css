@@ -911,6 +911,15 @@
 
 .contact-form { display: flex; flex-direction: column; gap: 20px; }
 
+/* Honeypot field: hidden from humans but present in the DOM for bots to fill. */
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 .form-group { display: flex; flex-direction: column; gap: 6px; }
 
 .form-label {

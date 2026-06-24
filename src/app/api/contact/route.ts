@@ -1,10 +1,29 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { isSpam } from '@/lib/spam'
+
+/** Reject cross-origin POSTs; same-origin requests send a matching Origin. */
+function originAllowed(req: NextRequest): boolean {
+  const origin = req.headers.get('origin')
+  if (!origin) return true // some legit clients omit it; honeypot/time-trap still apply
+  try {
+    return new URL(origin).host === req.headers.get('host')
+  } catch {
+    return false
+  }
+}
 
 export async function POST(req: NextRequest) {
-  const { name, mobile, email, subject, message } = await req.json()
+  const body = await req.json()
+  const { name, mobile, email, subject, message } = body
 
   if (!name || !email || !subject || !message) {
     return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
+  }
+
+  // Invisible bot protection. On a hit we pretend it worked so the bot moves
+  // on, but we never forward the submission to the webhook.
+  if (!originAllowed(req) || isSpam(body)) {
+    return NextResponse.json({ success: true })
   }
 
   const webhookUrl = process.env.N8N_WEBHOOK_URL

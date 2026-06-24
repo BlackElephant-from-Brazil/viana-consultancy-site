@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 
 type FormState = {
   name: string
@@ -8,13 +8,16 @@ type FormState = {
   email: string
   subject: string
   message: string
+  company: string // honeypot — stays empty for real users
 }
 
-const empty: FormState = { name: '', mobile: '', email: '', subject: '', message: '' }
+const empty: FormState = { name: '', mobile: '', email: '', subject: '', message: '', company: '' }
 
 export default function ContactPage() {
   const [form, setForm] = useState<FormState>(empty)
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  // Time the form first rendered, used server-side to reject instant (bot) submits.
+  const startedAt = useRef(Date.now())
 
   const update = (field: keyof FormState) => (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -27,7 +30,7 @@ export default function ContactPage() {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, startedAt: startedAt.current }),
       })
       setStatus(res.ok ? 'success' : 'error')
       if (res.ok) setForm(empty)
@@ -52,6 +55,20 @@ export default function ContactPage() {
         <div className="container">
           <div className="contact-form-wrap">
             <form className="contact-form" onSubmit={handleSubmit} noValidate>
+
+              {/* Honeypot: hidden from humans, catches bots that fill every field. */}
+              <div className="hp-field" aria-hidden="true">
+                <label htmlFor="cf-company">Company</label>
+                <input
+                  id="cf-company"
+                  type="text"
+                  name="company"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={form.company}
+                  onChange={update('company')}
+                />
+              </div>
 
               <div className="form-group">
                 <label htmlFor="cf-name" className="form-label">Your name</label>
