@@ -1,11 +1,18 @@
+import Link from 'next/link'
 import { getPublishedPosts } from '@/lib/posts'
 import BlogCard from '@/components/blog/BlogCard'
 
-export const dynamic = 'force-dynamic'
+export const revalidate = 3600
 
 export const metadata = {
   title: 'Blog — Patrícia Viana Law Firm',
   description: 'Insights on Portuguese immigration law, residency, visas and more.',
+  alternates: { canonical: '/blog' },
+  openGraph: {
+    title: 'Blog — Patrícia Viana Law Firm',
+    description: 'Insights on Portuguese immigration law, residency, visas and more.',
+    url: '/blog',
+  },
 }
 
 export default function BlogPage() {
@@ -46,9 +53,9 @@ export default function BlogPage() {
         <div className="container">
           <div className="section-tag" style={{ justifyContent: 'center' }}>Ready to start?</div>
           <h2 className="section-title" style={{ marginBottom: 20 }}>Book Your Consultation</h2>
-          <a href="https://vianaconsultancy.com/contact/" className="btn btn-gold" target="_blank" rel="noopener">
+          <Link href="/contact" className="btn btn-gold">
             Get in Touch
-          </a>
+          </Link>
         </div>
       </section>
     </>

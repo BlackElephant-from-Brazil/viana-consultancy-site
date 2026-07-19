@@ -1,11 +1,13 @@
+import { Fragment } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import TestimonialsSlider from './_components/TestimonialsSlider'
+import ServiceCards from './_components/ServiceCards'
 import { getPublishedPosts } from '@/lib/posts'
 import type { Post } from '@/lib/posts'
 import BlogCard from '@/components/blog/BlogCard'
 
-export const dynamic = 'force-dynamic'
+export const revalidate = 3600
 
 export default async function HomePage() {
   let posts: Post[] = []
@@ -54,22 +56,78 @@ export default async function HomePage() {
             <h2 className="section-title">Our Services</h2>
             <p className="section-sub">Drawing from our extensive experience working with clients of diverse nationalities, we&apos;ve been able to develop new strategies and services tailored to meet their unique needs.</p>
           </div>
-          <div className="services__grid" role="list">
-            {[
-              { icon: <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>, title: 'Consultations', desc: 'Receive expert advice on planning your move to Portugal, tailored to your individual needs and goals.' },
-              { icon: <><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></>, title: 'Legal Residency Permits', desc: 'Comprehensive guidance and support to help you obtain your legal residency permit in Portugal.' },
-              { icon: <path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>, title: 'Certified Translations', desc: 'Our team delivers precise and legally recognized translations for official documents.' },
-              { icon: <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>, title: 'Litigations', desc: 'We handle litigation cases with expertise, safeguarding your rights and striving for the best possible outcomes in court.' },
-              { icon: <><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></>, title: 'Visa Application Assistance', desc: 'We streamline the visa application process, ensuring accuracy and efficiency every step of the way.' },
-              { icon: <><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></>, title: 'Company Incorporation', desc: 'We assist in incorporating your company, ensuring legal compliance and maximizing tax benefits.' },
-            ].map(({ icon, title, desc }) => (
-              <div key={title} className="service-card" role="listitem">
-                <svg className="service-card__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{icon}</svg>
-                <h3 className="service-card__title">{title}</h3>
-                <p className="service-card__desc">{desc}</p>
-              </div>
-            ))}
-          </div>
+          <ServiceCards services={[
+            {
+              icon: <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>,
+              title: 'Consultations',
+              desc: 'Receive expert advice on planning your move to Portugal, tailored to your individual needs and goals.',
+              details: [
+                'Initial case assessment and eligibility review for Portuguese residency and visa options',
+                'Personalized roadmap tailored to your income type, goals, and family situation',
+                'Ongoing legal guidance throughout your relocation journey',
+                'Consultations available in Portuguese, English, and Spanish',
+              ],
+            },
+            {
+              icon: <><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></>,
+              title: 'Legal Residency Permits',
+              desc: 'Comprehensive guidance and support to help you obtain your legal residency permit in Portugal.',
+              details: [
+                'Preparation and submission of residency permit applications before AIMA',
+                'Document review and eligibility verification before filing',
+                'Appointment scheduling and follow-up with Portuguese authorities',
+                'Renewal support for existing residency permits',
+              ],
+            },
+            {
+              icon: <path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>,
+              title: 'Certified Translations',
+              desc: 'Our team delivers precise and legally recognized translations for official documents.',
+              details: [
+                'Certified translation of civil documents (birth, marriage, criminal record certificates)',
+                'Translation of academic and professional qualifications',
+                'Legal document translation for court and administrative proceedings',
+                'Portuguese, English, and Spanish translation services',
+              ],
+            },
+            {
+              icon: <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>,
+              title: 'Litigations',
+              desc: 'We handle litigation cases with expertise, safeguarding your rights and striving for the best possible outcomes in court.',
+              details: [
+                'Representation in administrative litigation before Portuguese courts',
+                'Appeals against denied or delayed immigration applications',
+                'Legal defense in disputes involving residency and nationality matters',
+                'Direct case management by licensed attorneys, no outsourcing',
+              ],
+            },
+            {
+              icon: <><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></>,
+              title: 'Visa Application Assistance',
+              desc: 'We streamline the visa application process, ensuring accuracy and efficiency every step of the way.',
+              details: [
+                'Guidance on choosing the correct visa category (D7, D8, D2, Golden Visa, and others)',
+                'Preparation of consular visa applications and supporting documentation',
+                'Coordination with Portuguese consulates abroad',
+                'Support transitioning from visa to residency permit after arrival',
+                <Fragment key="alttavia-partner">Visa processing and full relocation logistics are handled in partnership with{' '}
+                  <a href="https://alttavia-relocation.com" target="_blank" rel="noopener">Alttavia Relocation</a>,
+                  our trusted partner for relocation services in Portugal.
+                </Fragment>,
+              ],
+            },
+            {
+              icon: <><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></>,
+              title: 'Company Incorporation',
+              desc: 'We assist in incorporating your company, ensuring legal compliance and maximizing tax benefits.',
+              details: [
+                'Company registration and incorporation in Portugal',
+                'Guidance on the most tax-efficient company structure for your situation',
+                'Coordination with tax and accounting requirements',
+                'Ongoing legal compliance support for your Portuguese company',
+              ],
+            },
+          ]} />
         </div>
       </section>
 

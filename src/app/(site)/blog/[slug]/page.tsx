@@ -1,16 +1,49 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
+import type { Metadata } from 'next'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { getPostBySlug, getPublishedPosts } from '@/lib/posts'
 import { FAQ, FAQItem } from '@/components/blog/FAQ'
+import BlogCard from '@/components/blog/BlogCard'
+import { articleJsonLd, extractFaqItems, faqPageJsonLd } from '@/lib/structuredData'
 
-export const dynamic = 'force-dynamic'
+export const revalidate = 3600
 
 export function generateStaticParams() {
   try {
     return getPublishedPosts().map(p => ({ slug: p.slug }))
   } catch {
     return []
+  }
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params
+  let post: ReturnType<typeof getPostBySlug> = null
+  try {
+    post = getPostBySlug(slug)
+  } catch {
+    post = null
+  }
+  if (!post || !post.published) return {}
+
+  return {
+    title: `${post.title} — Patrícia Viana Law Firm`,
+    description: post.excerpt,
+    alternates: { canonical: `/blog/${post.slug}` },
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      url: `/blog/${post.slug}`,
+      type: 'article',
+      publishedTime: post.date,
+      tags: post.tags,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.excerpt,
+    },
   }
 }
 
@@ -30,8 +63,26 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
   }
   if (!post || !post.published) notFound()
 
+  const faqItems = extractFaqItems(post.content)
+  let relatedPosts: ReturnType<typeof getPublishedPosts> = []
+  try {
+    relatedPosts = getPublishedPosts().filter(p => p.slug !== post.slug).slice(0, 2)
+  } catch {
+    relatedPosts = []
+  }
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd(post)) }}
+      />
+      {faqItems.length > 0 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageJsonLd(faqItems)) }}
+        />
+      )}
       <section className="section section--white" style={{ paddingTop: 120 }}>
         <div className="container" style={{ maxWidth: 760 }}>
           <Link href="/blog" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 13, color: 'var(--gold)', marginBottom: 32 }}>
@@ -58,10 +109,21 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
 
           <div style={{ borderTop: '1px solid var(--border)', marginTop: 60, paddingTop: 32, textAlign: 'center' }}>
             <p style={{ color: 'var(--text)', marginBottom: 20 }}>Need legal assistance with your move to Portugal?</p>
-            <a href="https://vianaconsultancy.com/contact/" className="btn btn-gold" target="_blank" rel="noopener">
+            <Link href="/contact" className="btn btn-gold">
               Book a Consultation
-            </a>
+            </Link>
           </div>
+
+          {relatedPosts.length > 0 && (
+            <div style={{ marginTop: 60 }}>
+              <h2 style={{ fontFamily: 'Marcellus, serif', fontSize: '1.5rem', color: 'var(--navy)', marginBottom: 24 }}>
+                Related Articles
+              </h2>
+              <div className="blog__grid">
+                {relatedPosts.map(p => <BlogCard key={p.slug} post={p} />)}
+              </div>
+            </div>
+          )}
         </div>
       </section>
     </>

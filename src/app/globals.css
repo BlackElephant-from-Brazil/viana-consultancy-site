@@ -375,6 +375,76 @@
       line-height: 1.7;
     }
 
+    .service-card__toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 14px;
+      background: none;
+      border: none;
+      padding: 0;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--gold);
+      cursor: pointer;
+    }
+
+    .service-card__chevron {
+      font-size: 16px;
+      transition: transform var(--transition);
+    }
+
+    .service-card__chevron--open {
+      transform: rotate(180deg);
+    }
+
+    .service-card__details {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height var(--transition);
+    }
+
+    .service-card__details--open {
+      max-height: 420px;
+    }
+
+    .service-card__details li a {
+      color: var(--gold);
+      font-weight: 600;
+      text-decoration: underline;
+    }
+
+    .service-card__details ul {
+      margin: 14px 0 0;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+      list-style: none;
+    }
+
+    .service-card__details li {
+      position: relative;
+      padding-left: 16px;
+      font-size: 13px;
+      color: var(--text);
+      line-height: 1.6;
+      margin-bottom: 8px;
+    }
+
+    .service-card__details li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+
+    .service-card__details li:last-child {
+      margin-bottom: 0;
+    }
+
     /* ══════════════════════════════════
        BLOG
     ══════════════════════════════════ */
