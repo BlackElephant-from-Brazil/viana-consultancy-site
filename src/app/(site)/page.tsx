@@ -93,7 +93,7 @@ export default async function HomePage() {
             {
               icon: <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>,
               title: 'Litigations',
-              desc: 'We handle litigation cases with expertise, safeguarding your rights and striving for the best possible outcomes in court.',
+              desc: 'We provide diligent, technically rigorous legal representation in litigation matters, protecting our clients’ rights at every stage of the judicial process.',
               details: [
                 'Representation in administrative litigation before Portuguese courts',
                 'Appeals against denied or delayed immigration applications',
