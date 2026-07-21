@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
-import Script from 'next/script'
 import './globals.css'
 import { organizationJsonLd } from '@/lib/structuredData'
+import CookieConsent from '@/components/CookieConsent'
 
 const title = 'Patrícia Viana — Lawyer'
 const description = 'Patrícia Viana Law Firm — Expert Portuguese immigration attorneys helping you build a new life in Portugal.'
@@ -42,20 +42,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd()) }}
         />
-        {gaId && (
-          <>
-            <Script src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`} strategy="afterInteractive" />
-            <Script id="ga4-init" strategy="afterInteractive">
-              {`window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', '${gaId}');`}
-            </Script>
-          </>
-        )}
       </head>
       <body>
         {children}
+        <CookieConsent gaId={gaId} />
       </body>
     </html>
   )
