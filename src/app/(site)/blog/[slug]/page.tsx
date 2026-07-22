@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { getPostBySlug, getPublishedPosts } from '@/lib/posts'
 import { FAQ, FAQItem } from '@/components/blog/FAQ'
+import { CTAButton } from '@/components/blog/CTAButton'
 import BlogCard from '@/components/blog/BlogCard'
 import { articleJsonLd, extractFaqItems, faqPageJsonLd } from '@/lib/structuredData'
 
@@ -51,7 +52,7 @@ function formatDate(date: string) {
   return new Date(date).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })
 }
 
-const mdxComponents = { FAQ, FAQItem }
+const mdxComponents = { FAQ, FAQItem, CTAButton }
 
 export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
