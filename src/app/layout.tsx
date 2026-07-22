@@ -1,11 +1,9 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import { organizationJsonLd } from '@/lib/structuredData'
-import CookieConsent from '@/components/CookieConsent'
 
 const title = 'Patrícia Viana — Lawyer'
 const description = 'Patrícia Viana Law Firm — Expert Portuguese immigration attorneys helping you build a new life in Portugal.'
-const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID
 const siteVerification = process.env.GOOGLE_SITE_VERIFICATION
 
 export const metadata: Metadata = {
@@ -45,7 +43,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         {children}
-        <CookieConsent gaId={gaId} />
       </body>
     </html>
   )
