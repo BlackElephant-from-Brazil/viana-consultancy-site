@@ -16,8 +16,6 @@ tags:
   - Portugal visa requirements
   - immigrate to Portugal
 ---
-# Portugal Is Closing More Routes to Residence Without a Visa
-
 Portugal has approved further changes to its immigration law that remove two more possibilities for applying for residence after entering the country without a residence visa.
 
 The changes affect people who hoped to obtain residence by enrolling in a professional training course after arriving in Portugal. They also restrict the rule that allowed foreign parents to apply for residence because they had a minor child legally residing in the country. Under the approved wording, this route will be limited to parents of Portuguese children.
