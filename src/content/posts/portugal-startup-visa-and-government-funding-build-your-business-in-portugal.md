@@ -52,7 +52,7 @@ This does not mean that every Startup Visa applicant will receive government fun
 
 ## Legal and strategic support for founders
 
-At Alttavia Relocation, we assist international entrepreneurs with both the Portugal Startup Visa process and the preparation of their business structure in Portugal.
+At Viana Consultancy, we assist international entrepreneurs with both the Portugal Startup Visa process and the preparation of their business structure in Portugal.
 
 Our work may cover the initial assessment of the business, preparation of the Startup Visa application, communication with certified incubators, company formation, residence procedures and the identification and coordination of suitable funding applications.
 

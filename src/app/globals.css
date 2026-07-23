@@ -1474,6 +1474,7 @@
 .post-content li { margin-bottom: .4rem; line-height: 1.7; color: var(--text); }
 .post-content blockquote { border-left: 3px solid var(--gold); padding-left: 20px; margin: 1.5rem 0; font-style: italic; color: var(--navy); font-size: 1.1rem; }
 .post-content a  { color: var(--gold); text-decoration: underline; text-underline-offset: 3px; }
+.post-content a.btn-gold { color: var(--white); text-decoration: none; }
 .post-content strong { color: var(--navy); font-weight: 600; }
 .post-content code { background: var(--bg); padding: 2px 6px; border-radius: 4px; font-size: 13px; font-family: 'Courier New', monospace; }
 .post-content pre { background: var(--navy); color: #e2e8f0; padding: 20px; border-radius: 8px; overflow-x: auto; margin: 1.5rem 0; }
