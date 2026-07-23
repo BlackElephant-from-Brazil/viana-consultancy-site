@@ -16,8 +16,6 @@ tags:
   - US citizens
   - moving to Portugal
 ---
-# Portugal Startup Visa and Government Funding: Build Your Business in Portugal
-
 Moving an innovative business to Portugal can offer more than a route to European residence. With the right structure, it may also place your company in a position to apply for Portuguese and European funding.
 
 The Portugal Startup Visa is intended for non-EU founders who want to create or relocate an innovative and scalable business. The project must be capable of developing innovative products or services, creating qualified employment and achieving meaningful commercial growth. It must also be accepted by a certified Portuguese incubator and approved by IAPMEI.
