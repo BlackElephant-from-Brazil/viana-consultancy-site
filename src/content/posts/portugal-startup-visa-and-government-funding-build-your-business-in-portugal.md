@@ -13,7 +13,6 @@ slug: portugal-startup-visa-and-government-funding-build-your-business-in-portug
 published: true
 tags:
   - Portugal visa
-  - US citizens
   - moving to Portugal
 ---
 Moving an innovative business to Portugal can offer more than a route to European residence. With the right structure, it may also place your company in a position to apply for Portuguese and European funding.
