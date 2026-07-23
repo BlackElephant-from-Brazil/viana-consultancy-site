@@ -10,7 +10,7 @@ author: >-
   Patrícia Viana, Lawyer, PGdip in Administrative and Tax Law by the University
   of Lisbon
 slug: portugal-startup-visa-and-government-funding-build-your-business-in-portugal
-published: false
+published: true
 tags:
   - Portugal visa
   - US citizens
