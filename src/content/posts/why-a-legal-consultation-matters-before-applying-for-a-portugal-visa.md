@@ -1,5 +1,5 @@
 ---
-title: Why a Legal Consultation Matters Before Applying for a Portugal Visa
+title: Why We Charge for Legal Consultations Before Applying for a Portugal Visa
 date: '2026-07-30'
 excerpt: Why We Charge for Legal Consultations
 author: >-
