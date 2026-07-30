@@ -6,7 +6,7 @@ author: >-
   Patrícia Viana, Immigration Lawyer, PGdip in Administrative and Tax Law
   (University of Lisbon)
 slug: why-a-legal-consultation-matters-before-applying-for-a-portugal-visa
-published: false
+published: true
 tags:
   - Portugal Visa
   - Portuguese Immigration Lawyer
