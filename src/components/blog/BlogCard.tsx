@@ -19,7 +19,7 @@ export default function BlogCard({ post }: { post: Post }) {
           {post.tags.slice(0, 2).join(' · ') || 'Blog'}
         </div>
         <h3 className="blog-card__title">{post.title}</h3>
-        {post.excerpt && <p style={{ fontSize: 13, color: 'var(--text)', marginBottom: 12, lineHeight: 1.6 }}>{post.excerpt}</p>}
+        {post.excerpt && <p style={{ fontSize: 13, color: 'var(--text)', marginBottom: 12, lineHeight: 1.6, flex: 1 }}>{post.excerpt}</p>}
         <div style={{ fontSize: 12, color: 'var(--text)', marginBottom: 10 }}>
           {post.author} · {formatDate(post.date)}
         </div>

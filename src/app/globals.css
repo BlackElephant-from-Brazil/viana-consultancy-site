@@ -488,7 +488,6 @@
       color: var(--navy);
       line-height: 1.45;
       margin-bottom: 14px;
-      flex: 1;
     }
 
     .blog-card__link {
