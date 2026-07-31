@@ -19,8 +19,8 @@ export default function BlogCard({ post }: { post: Post }) {
           {post.tags.slice(0, 2).join(' · ') || 'Blog'}
         </div>
         <h3 className="blog-card__title">{post.title}</h3>
-        {post.excerpt && <p style={{ fontSize: 13, color: 'var(--text)', marginBottom: 12, lineHeight: 1.6, flex: 1 }}>{post.excerpt}</p>}
-        <div style={{ fontSize: 12, color: 'var(--text)', marginBottom: 10 }}>
+        <p className="blog-card__excerpt">{post.excerpt}</p>
+        <div className="blog-card__meta">
           {post.author} · {formatDate(post.date)}
         </div>
         <Link href={`/blog/${post.slug}`} className="blog-card__link" aria-label={`Read ${post.title}`}>
