@@ -28,6 +28,11 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: '/portugal-the-ideal-destination-for-investors-and-the-golden-visa-discover-the-advantages-of-establishing-an-offshore-company-in-portugal',
+        destination: '/blog/portugal-ideal-destination-investors-golden-visa-offshore-company',
+        permanent: true,
+      },
+      {
         source: '/category/blog',
         destination: '/blog',
         permanent: true,
