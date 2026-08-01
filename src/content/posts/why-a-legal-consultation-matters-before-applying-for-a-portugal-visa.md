@@ -1,7 +1,12 @@
 ---
 title: Why We Charge for Legal Consultations Before Applying for a Portugal Visa
 date: '2026-07-30'
-excerpt: Why We Charge for Legal Consultations
+excerpt: >-
+  Many people ask if they can get quick answers before booking a
+  consultation, but immigration law rarely allows for simple answers.
+  Discover why a paid legal consultation, credited toward our fees if you
+  retain our firm, is often the smallest and most valuable investment in
+  your Portugal relocation strategy.
 author: >-
   Patrícia Viana, Immigration Lawyer, PGdip in Administrative and Tax Law
   (University of Lisbon)
