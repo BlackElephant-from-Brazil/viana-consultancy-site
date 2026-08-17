@@ -9,7 +9,8 @@ author: 'Patrícia Viana, Lawyer, PGdip in Administrative and Tax Law'
 slug: portugal-visa-denied
 published: true
 tags:
-  - portugal-visa-denied
+  - Portugal Visa Refusal
+  - Portugal Immigration Law
 ---
 Receiving a visa refusal is frustrating. Leaving it unanswered for several weeks can be considerably worse.
 
