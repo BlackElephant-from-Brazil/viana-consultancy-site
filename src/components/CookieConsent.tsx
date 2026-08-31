@@ -8,7 +8,7 @@ const STORAGE_KEY = 'cookie-consent'
 
 type Consent = 'accepted' | 'rejected'
 
-export default function CookieConsent({ gaId }: { gaId?: string }) {
+export default function CookieConsent({ gaId, clarityId }: { gaId?: string; clarityId?: string }) {
   const [consent, setConsent] = useState<Consent | null>(null)
   const [ready, setReady] = useState(false)
 
@@ -35,6 +35,16 @@ export default function CookieConsent({ gaId }: { gaId?: string }) {
               gtag('config', '${gaId}');`}
           </Script>
         </>
+      )}
+
+      {clarityId && consent === 'accepted' && (
+        <Script id="clarity-init" strategy="afterInteractive">
+          {`(function(c,l,a,r,i,t,y){
+              c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+              t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+              y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+            })(window, document, 'clarity', 'script', '${clarityId}');`}
+        </Script>
       )}
 
       {ready && consent === null && (
