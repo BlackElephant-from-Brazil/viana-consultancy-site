@@ -48,8 +48,8 @@ export default function Footer() {
 
           <p className="footer__made">
             Made with ❤️ by{' '}
-            <a href="https://blackelephant.com.br/en" target="_blank" rel="noopener" className="footer__made-link">
-              BlackElephant
+            <a href="https://guyshore.com" target="_blank" rel="noopener" className="footer__made-link">
+              guyshore.com
             </a>
           </p>
         </div>

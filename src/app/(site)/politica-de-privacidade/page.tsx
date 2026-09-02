@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   alternates: { canonical: '/politica-de-privacidade' },
 }
 
-const lastUpdated = 'July 20, 2026'
+const lastUpdated = 'August 31, 2026'
 
 export default function PrivacyPolicyPage() {
   return (
@@ -42,7 +42,7 @@ export default function PrivacyPolicyPage() {
 
           <h2>2. What personal data we collect</h2>
           <p><strong>Data you provide directly.</strong> When you use our contact form, we collect your name, phone number, email address, subject, and message content.</p>
-          <p><strong>Data collected automatically.</strong> When you browse the Site, and only if you consent via our cookie banner, we use Google Analytics 4 to collect usage data such as pages visited, time spent on the Site, approximate location, device and browser type, and referral source.</p>
+          <p><strong>Data collected automatically.</strong> When you browse the Site, and only if you consent via our cookie banner, we use Google Analytics 4 to collect usage data such as pages visited, time spent on the Site, approximate location, device and browser type, and referral source. On the same consent, we also use Microsoft Clarity, which records how pages are used (mouse movement, clicks, scrolling and page navigation) to produce anonymized session replays and heatmaps. Clarity is configured to mask the content you type into forms.</p>
 
           <h2>3. Why we use your data and our legal basis</h2>
           <ul>
@@ -53,19 +53,19 @@ export default function PrivacyPolicyPage() {
           <h2>4. Cookies</h2>
           <p>
             The Site uses only strictly necessary cookies by default (for example, to remember your cookie
-            preference). Analytics cookies from Google Analytics are only activated after you accept them via the
-            cookie banner shown on your first visit. You can withdraw your consent at any time by clearing your
+            preference). Analytics cookies from Google Analytics and Microsoft Clarity are only activated after you
+            accept them via the cookie banner shown on your first visit. You can withdraw your consent at any time by clearing your
             browser&apos;s cookies for this Site or by contacting us at the email address above.
           </p>
 
           <h2>5. Who we share your data with</h2>
-          <p>Contact form submissions are processed through our workflow-automation provider solely to route your enquiry to our team; the message content is not shared beyond that purpose. Where you have consented to analytics, usage data is processed by Google Ireland Limited (Google Analytics). Our website is hosted by Netlify, Inc., which processes data as necessary to operate the Site. We do not sell your personal data to third parties.</p>
+          <p>Contact form submissions are processed through our workflow-automation provider solely to route your enquiry to our team; the message content is not shared beyond that purpose. Where you have consented to analytics, usage data is processed by Google Ireland Limited (Google Analytics) and by Microsoft Ireland Operations Limited (Microsoft Clarity). Our website is hosted by Netlify, Inc., which processes data as necessary to operate the Site. We do not sell your personal data to third parties.</p>
 
           <h2>6. International data transfers</h2>
-          <p>Some of our service providers (such as Google) may process data outside the European Economic Area. Where this occurs, we rely on appropriate safeguards recognized under GDPR, such as Standard Contractual Clauses or an adequacy framework such as the EU-U.S. Data Privacy Framework, where applicable to that provider.</p>
+          <p>Some of our service providers (such as Google and Microsoft) may process data outside the European Economic Area. Where this occurs, we rely on appropriate safeguards recognized under GDPR, such as Standard Contractual Clauses or an adequacy framework such as the EU-U.S. Data Privacy Framework, where applicable to that provider.</p>
 
           <h2>7. How long we keep your data</h2>
-          <p>We retain contact form submissions only for as long as necessary to respond to and manage your enquiry, and afterwards for as long as required to comply with our professional and legal obligations as a Portuguese law firm. Analytics data is retained according to Google Analytics&apos; standard retention settings.</p>
+          <p>We retain contact form submissions only for as long as necessary to respond to and manage your enquiry, and afterwards for as long as required to comply with our professional and legal obligations as a Portuguese law firm. Analytics data is retained according to Google Analytics&apos; standard retention settings, and Microsoft Clarity session data is retained for a maximum of 30 days.</p>
 
           <h2>8. Your rights under the GDPR</h2>
           <p>Subject to the conditions set out in the GDPR, you have the right to:</p>
