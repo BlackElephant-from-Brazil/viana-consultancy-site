@@ -231,13 +231,8 @@ export default async function HomePage() {
             <h2 className="section-title">Contact</h2>
           </div>
           <div className="contact__grid">
-            <div className="contact__map">
-              <iframe
-                src="https://maps.google.com/maps?q=Av.%20Ant%C3%B3nio%20Augusto%20Aguiar%2C%2024%2C%201050-016%2C%20Lisbon&t=m&z=16&output=embed&iwloc=near"
-                title="Av. António Augusto Aguiar, 24, 1st floor right, 1050-016, Lisbon"
-                aria-label="Office location map"
-                loading="lazy"
-              />
+            <div className="contact__form">
+              <ContactForm />
             </div>
             <div className="contact__right">
               <h3>Get in Touch</h3>
@@ -264,6 +259,15 @@ export default async function HomePage() {
                     </a>
                   </div>
                 </div>
+              </div>
+
+              <div className="contact__map">
+                <iframe
+                  src="https://maps.google.com/maps?q=Av.%20Ant%C3%B3nio%20Augusto%20Aguiar%2C%2024%2C%201050-016%2C%20Lisbon&t=m&z=16&output=embed&iwloc=near"
+                  title="Av. António Augusto Aguiar, 24, 1st floor right, 1050-016, Lisbon"
+                  aria-label="Office location map"
+                  loading="lazy"
+                />
               </div>
             </div>
           </div>

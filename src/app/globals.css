@@ -390,6 +390,9 @@
 
     .hero__form-card .contact-form .form-submit {
       width: 100%;
+      /* .btn is inline-flex without justify-content, so a full width button
+         would push its icon and label to the left edge. */
+      justify-content: center;
       margin-top: 2px;
     }
 
@@ -879,9 +882,11 @@
       align-items: start;
     }
 
+    .contact__map { margin-top: 28px; }
+
     .contact__map iframe {
       width: 100%;
-      height: 380px;
+      height: 260px;
       border: none;
       border-radius: var(--radius);
       display: block;
@@ -1069,17 +1074,64 @@
       .team-card__img { height: 300px; }
       .footer__grid { grid-template-columns: 1fr; }
       .footer__bottom { flex-direction: column; text-align: center; }
-      .hero { background-position: 62% center; }
-      /* One column of photo behind two stacked blocks needs an even scrim. */
-      .hero::before {
-        background: linear-gradient(180deg,
-          rgba(1,19,66,.92) 0%,
-          rgba(1,19,66,.80) 42%,
-          rgba(1,19,66,.93) 100%);
+      /* Phones read the hero as two screens: the portrait and the copy fill
+         the first, the form fills the second. So the photo moves off .hero
+         (which now spans both) and onto .hero__content, which is exactly one
+         screen tall. */
+      .hero {
+        min-height: 0;
+        background-image: none;
+        background-color: var(--navy);
       }
-      .hero__inner { padding-block: 92px 40px; gap: 26px; }
-      .hero__sub { margin-bottom: 20px; }
-      .hero__form-card { padding: 20px 18px 22px; }
+      .hero::before { display: none; }
+
+      .hero__inner { padding-block: 0; gap: 0; }
+
+      .hero__content {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        /* Portrait on top, copy along the bottom. */
+        justify-content: flex-end;
+        min-height: 100vh;
+        min-height: 100dvh;
+        max-width: none;
+        /* Cancels the container gutter so the photo bleeds to both edges,
+           then puts it back on the text. */
+        margin-inline: -20px;
+        padding: 92px 20px 44px;
+        background-image: url('/images/hero-banner.webp');
+        background-size: cover;
+        /* hero-banner.webp is 2560x640 and Patricia sits at about 19% of its
+           width, so a portrait crop has to be pulled well to the left or it
+           lands on the empty wall behind her. */
+        background-position: 15% center;
+        background-repeat: no-repeat;
+      }
+
+      .hero__content::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        /* Light over her face, heavy under the copy. */
+        background: linear-gradient(180deg,
+          rgba(1,19,66,.42) 0%,
+          rgba(1,19,66,.38) 26%,
+          rgba(1,19,66,.80) 55%,
+          rgba(1,19,66,.95) 100%);
+      }
+
+      .hero__content > * { position: relative; z-index: 1; }
+
+      .hero__sub { margin-bottom: 22px; }
+
+      /* The eyebrow already says Lisbon, so the third credential would only
+         repeat it and cost a line on a narrow screen. */
+      .hero__trust li:nth-child(3) { display: none; }
+
+      /* Second screen. */
+      .hero__form-card { margin: 28px 0 56px; padding: 22px 18px 24px; }
+      .hero__form-title { font-size: 1.25rem; }
       .hero__form-card .contact-form { grid-template-columns: 1fr; }
       .hero__form-card .contact-form > [data-field='name'],
       .hero__form-card .contact-form > [data-field='mobile'] { grid-column: 1 / -1; }
@@ -1090,16 +1142,7 @@
         font-size: 16px;
         padding: 12px 14px;
       }
-      .hero__form-card .contact-form .form-textarea { height: 76px; }
-
-      /* A phone cannot hold the headline, the mission line, the credentials and
-         a five field form in one screen. The form wins the fold: the mission
-         line is restated at the top of the About section immediately below, and
-         the credentials come back from 769px up. */
-      .hero__sub,
-      .hero__trust,
-      .hero__form-sub { display: none; }
-      .hero__form-title { margin-bottom: 16px; font-size: 1.2rem; }
+      .hero__form-card .contact-form .form-textarea { height: 92px; }
     }
 
     @media (max-width: 480px) {
@@ -1110,14 +1153,14 @@
        expanded). Everything tightens a notch so the send button still lands
        inside the fold. */
     @media (max-width: 768px) and (max-height: 700px) {
-      .hero__inner { padding-block: 84px 16px; gap: 14px; }
+      .hero__content { padding-top: 84px; padding-bottom: 32px; }
       .hero .section-tag { margin-bottom: 8px; }
-      .hero__title { font-size: 1.65rem; margin-bottom: 12px; }
-      .hero__form-card { padding: 16px 16px 16px; }
-      .hero__form-title { font-size: 1.1rem; margin-bottom: 12px; }
-      .hero__form-card .contact-form { gap: 10px; }
-      .hero__form-card .contact-form .form-label { font-size: 11.5px; }
-      .hero__form-card .contact-form .form-textarea { height: 52px; }
+      .hero__title { font-size: 1.7rem; margin-bottom: 12px; }
+      .hero__sub { margin-bottom: 18px; }
+      .hero__form-card { margin: 24px 0 48px; padding: 18px 16px 20px; }
+      .hero__form-title { font-size: 1.1rem; }
+      .hero__form-card .contact-form { gap: 11px; }
+      .hero__form-card .contact-form .form-textarea { height: 74px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
