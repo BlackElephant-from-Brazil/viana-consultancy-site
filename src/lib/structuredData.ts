@@ -14,9 +14,9 @@ export function organizationJsonLd() {
     email: 'enquiries@vianaconsultancy.com',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'Av. Elias Garcia, 123-A',
-      postalCode: '1050-098',
-      addressLocality: 'Lisboa',
+      streetAddress: 'Av. António Augusto Aguiar, 24, 1st floor right',
+      postalCode: '1050-016',
+      addressLocality: 'Lisbon',
       addressCountry: 'PT',
     },
     sameAs: [

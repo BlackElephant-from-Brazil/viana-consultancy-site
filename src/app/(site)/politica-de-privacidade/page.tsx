@@ -35,7 +35,7 @@ export default function PrivacyPolicyPage() {
           </p>
           <p>
             <strong>Patrícia Viana Law Firm</strong><br />
-            Av. Elias Garcia, 123-A, 1050-098, Lisboa, Portugal<br />
+            Av. António Augusto Aguiar, 24, 1st floor right, 1050-016, Lisbon, Portugal<br />
             Email: <a href="mailto:enquiries@vianaconsultancy.com">enquiries@vianaconsultancy.com</a><br />
             Phone: <a href="tel:+351960174940">+351 960 174 940</a>
           </p>

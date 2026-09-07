@@ -233,8 +233,8 @@ export default async function HomePage() {
           <div className="contact__grid">
             <div className="contact__map">
               <iframe
-                src="https://maps.google.com/maps?q=Av.%20Elias%20Garcia%2C%20123-A%2C%201050-098%2C%20Lisboa&t=m&z=16&output=embed&iwloc=near"
-                title="Av. Elias Garcia, 123-A, 1050-098, Lisboa"
+                src="https://maps.google.com/maps?q=Av.%20Ant%C3%B3nio%20Augusto%20Aguiar%2C%2024%2C%201050-016%2C%20Lisbon&t=m&z=16&output=embed&iwloc=near"
+                title="Av. António Augusto Aguiar, 24, 1st floor right, 1050-016, Lisbon"
                 aria-label="Office location map"
                 loading="lazy"
               />
@@ -259,8 +259,8 @@ export default async function HomePage() {
                 <div className="contact__item" role="listitem">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ width:18, height:18, color:'var(--gold)', flexShrink:0, marginTop:2 }}><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                   <div className="contact__item-body">
-                    <a href="https://www.google.com/maps/dir//Av.+Elias+Garcia+123A,+1050-031+Lisboa" target="_blank" rel="noopener">
-                      Av. Elias Garcia, 123-A, 1050-098, Lisboa.
+                    <a href="https://www.google.com/maps/dir//Av.+Ant%C3%B3nio+Augusto+Aguiar+24,+1050-016+Lisbon" target="_blank" rel="noopener">
+                      Av. António Augusto Aguiar, 24, 1st floor right, 1050-016, Lisbon.
                     </a>
                   </div>
                 </div>
