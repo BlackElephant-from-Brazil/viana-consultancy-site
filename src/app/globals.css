@@ -240,51 +240,159 @@
     /* ══════════════════════════════════
        HERO
     ══════════════════════════════════ */
+    /* One screen tall. dvh rather than vh so mobile browser chrome does not
+       push the form below the fold. No max-height on purpose: if a very short
+       viewport cannot fit the card, the hero grows instead of clipping the
+       submit button. */
     .hero {
-      min-height: 650px;
+      min-height: 100vh;
+      min-height: 100dvh;
       display: flex;
       align-items: center;
-      justify-content: center;
       position: relative;
-      overflow: hidden;
-      text-align: center;
+      overflow-x: clip;
       background-image: url('/images/hero-banner.webp');
       background-size: cover;
       background-position: left center;
       background-repeat: no-repeat;
     }
 
+    /* Directional scrim. The old radial version was darkest at the centre,
+       which is exactly where the portrait is, so it buried the one image that
+       carries the firm's credibility. This one is heavy on the left, where the
+       white type sits, and lifts across the face. */
     .hero::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(at center center, rgba(30,15,15,.48) 0%, rgba(1,19,66,.62) 100%);
+      background: linear-gradient(97deg,
+        rgba(1,19,66,.95) 0%,
+        rgba(1,19,66,.88) 26%,
+        rgba(1,19,66,.45) 52%,
+        rgba(1,19,66,.60) 78%,
+        rgba(1,19,66,.74) 100%);
     }
 
-    .hero__content {
-      position: relative;
-      z-index: 2;
-      padding: 120px 20px 80px;
-      max-width: 800px;
+    /* The container carries the stacking context so the form card and the
+       copy both sit above the .hero::before overlay. */
+    .hero .container { position: relative; z-index: 2; }
+
+    .hero__inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 416px);
+      gap: 56px;
+      align-items: center;
+      /* Top padding clears the fixed navbar. */
+      padding-block: 104px 44px;
     }
+
+    .hero__content { max-width: 660px; }
+
+    /* Gold reads brighter than --gold over navy, the same swap the inner page
+       heroes already make. */
+    .hero .section-tag { color: var(--gold-light); }
+    .hero .section-tag::before { background: var(--gold-light); }
 
     .hero__title {
       font-family: 'Marcellus', serif;
-      font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+      font-size: clamp(2.1rem, 4.4vw, 3.35rem);
       color: var(--white);
-      line-height: 1.15;
-      margin-bottom: 20px;
+      line-height: 1.12;
+      letter-spacing: -.01em;
+      margin-bottom: 18px;
     }
 
     .hero__sub {
-      font-size: 16px;
+      font-size: 15.5px;
       font-weight: 400;
-      color: rgba(255,255,255,.78);
-      max-width: 580px;
-      margin-inline: auto;
-      margin-bottom: 36px;
-      line-height: 1.75;
+      color: rgba(255,255,255,.80);
+      max-width: 48ch;
+      line-height: 1.72;
+      margin-bottom: 26px;
     }
+
+    /* Three facts stated elsewhere on this site. Credibility is the job of a
+       law firm hero, so it belongs above the fold rather than further down. */
+    .hero__trust {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 20px;
+      list-style: none;
+    }
+
+    .hero__trust li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12.5px;
+      font-weight: 500;
+      letter-spacing: .03em;
+      color: rgba(255,255,255,.84);
+    }
+
+    .hero__trust svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+      color: var(--gold-light);
+    }
+
+    /* Enquiry form card. Same component and fields as the contact page; the
+       gold top edge repeats the one on the contact page sidebar. */
+    .hero__form-card {
+      background: var(--white);
+      border-top: 3px solid var(--gold);
+      border-radius: var(--radius);
+      padding: 24px 24px 26px;
+      box-shadow: 0 26px 64px rgba(1,19,66,.34);
+    }
+
+    .hero__form-title {
+      font-family: 'Marcellus', serif;
+      font-size: 1.3rem;
+      color: var(--navy);
+      line-height: 1.25;
+    }
+
+    .hero__form-sub {
+      font-size: 12.5px;
+      color: var(--text);
+      line-height: 1.55;
+      margin: 6px 0 18px;
+    }
+
+    /* Two columns and tighter rows so the whole form, submit button included,
+       clears the fold. Only the arrangement changes: same fields, same
+       component, same endpoint as /contact. */
+    .hero__form-card .contact-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 13px 12px;
+    }
+
+    .hero__form-card .contact-form > * { grid-column: 1 / -1; }
+
+    .hero__form-card .contact-form > [data-field='name'],
+    .hero__form-card .contact-form > [data-field='mobile'] { grid-column: span 1; }
+
+    .hero__form-card .contact-form .form-label { font-size: 12px; }
+
+    .hero__form-card .contact-form .form-input,
+    .hero__form-card .contact-form .form-textarea {
+      padding: 10px 13px;
+      font-size: 13.5px;
+    }
+
+    .hero__form-card .contact-form .form-textarea {
+      min-height: 0;
+      height: 86px;
+    }
+
+    .hero__form-card .contact-form .form-submit {
+      width: 100%;
+      margin-top: 2px;
+    }
+
 
     /* ══════════════════════════════════
        ABOUT  (id="sobre")
@@ -940,6 +1048,9 @@
        RESPONSIVE
     ══════════════════════════════════ */
     @media (max-width: 1024px) {
+      .hero__inner { grid-template-columns: 1fr; gap: 32px; padding-block: 96px 48px; }
+      .hero__form-card { max-width: 520px; }
+      .hero__content { max-width: 560px; }
       .about__grid { grid-template-columns: 1fr; gap: 40px; }
       .about__image img { height: 400px; }
       .services__grid { grid-template-columns: repeat(2, 1fr); }
@@ -958,11 +1069,55 @@
       .team-card__img { height: 300px; }
       .footer__grid { grid-template-columns: 1fr; }
       .footer__bottom { flex-direction: column; text-align: center; }
-      .hero { background-position: -300px center; }
+      .hero { background-position: 62% center; }
+      /* One column of photo behind two stacked blocks needs an even scrim. */
+      .hero::before {
+        background: linear-gradient(180deg,
+          rgba(1,19,66,.92) 0%,
+          rgba(1,19,66,.80) 42%,
+          rgba(1,19,66,.93) 100%);
+      }
+      .hero__inner { padding-block: 92px 40px; gap: 26px; }
+      .hero__sub { margin-bottom: 20px; }
+      .hero__form-card { padding: 20px 18px 22px; }
+      .hero__form-card .contact-form { grid-template-columns: 1fr; }
+      .hero__form-card .contact-form > [data-field='name'],
+      .hero__form-card .contact-form > [data-field='mobile'] { grid-column: 1 / -1; }
+      /* 16px keeps iOS from zooming on focus, and the taller box keeps the
+         touch target at 44px. */
+      .hero__form-card .contact-form .form-input,
+      .hero__form-card .contact-form .form-textarea {
+        font-size: 16px;
+        padding: 12px 14px;
+      }
+      .hero__form-card .contact-form .form-textarea { height: 76px; }
+
+      /* A phone cannot hold the headline, the mission line, the credentials and
+         a five field form in one screen. The form wins the fold: the mission
+         line is restated at the top of the About section immediately below, and
+         the credentials come back from 769px up. */
+      .hero__sub,
+      .hero__trust,
+      .hero__form-sub { display: none; }
+      .hero__form-title { margin-bottom: 16px; font-size: 1.2rem; }
     }
 
     @media (max-width: 480px) {
       .hero__title { font-size: 1.9rem; }
+    }
+
+    /* Short phones (a 640px tall Android, or any handset with the browser bars
+       expanded). Everything tightens a notch so the send button still lands
+       inside the fold. */
+    @media (max-width: 768px) and (max-height: 700px) {
+      .hero__inner { padding-block: 84px 16px; gap: 14px; }
+      .hero .section-tag { margin-bottom: 8px; }
+      .hero__title { font-size: 1.65rem; margin-bottom: 12px; }
+      .hero__form-card { padding: 16px 16px 16px; }
+      .hero__form-title { font-size: 1.1rem; margin-bottom: 12px; }
+      .hero__form-card .contact-form { gap: 10px; }
+      .hero__form-card .contact-form .form-label { font-size: 11.5px; }
+      .hero__form-card .contact-form .form-textarea { height: 52px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1024,17 +1179,20 @@
   overflow: hidden;
 }
 
-.form-group { display: flex; flex-direction: column; gap: 6px; }
+.contact-form .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 0; }
 
-.form-label {
+.contact-form .form-label {
+  display: block;
   font-size: 13px;
   font-weight: 600;
   color: var(--navy);
   letter-spacing: .02em;
+  text-transform: none;
+  margin-bottom: 0;
 }
 
-.form-input,
-.form-textarea {
+.contact-form .form-input,
+.contact-form .form-textarea {
   width: 100%;
   padding: 12px 16px;
   border: 1.5px solid var(--border);
@@ -1047,16 +1205,22 @@
   outline: none;
 }
 
-.form-input::placeholder,
-.form-textarea::placeholder { color: #bbb; }
+.contact-form .form-input::placeholder,
+.contact-form .form-textarea::placeholder { color: #bbb; }
 
-.form-input:focus,
-.form-textarea:focus {
+.contact-form .form-input:focus,
+.contact-form .form-textarea:focus {
   border-color: var(--gold);
   box-shadow: 0 0 0 3px rgba(201,151,58,.15);
 }
 
-.form-textarea { resize: vertical; min-height: 140px; }
+.contact-form .form-textarea {
+  resize: vertical;
+  min-height: 140px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+}
 
 .form-submit { align-self: flex-start; margin-top: 4px; }
 .form-submit:disabled { opacity: .7; cursor: not-allowed; transform: none !important; }

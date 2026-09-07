@@ -14,9 +14,9 @@ function originAllowed(req: NextRequest): boolean {
 
 export async function POST(req: NextRequest) {
   const body = await req.json()
-  const { name, mobile, email, subject, message } = body
+  const { name, mobile, email, message } = body
 
-  if (!name || !email || !subject || !message) {
+  if (!name || !email || !message) {
     return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
   }
 
@@ -30,6 +30,11 @@ export async function POST(req: NextRequest) {
   if (!webhookUrl) {
     return NextResponse.json({ error: 'Contact service unavailable' }, { status: 503 })
   }
+
+  // The form no longer asks for a subject, but the n8n workflow still reads
+  // one, so we send a derived line and the payload shape stays identical.
+  // TODO: delete `subject` here once n8n stops reading it.
+  const subject = `Website enquiry from ${name}`
 
   const res = await fetch(webhookUrl, {
     method: 'POST',

@@ -1,6 +1,7 @@
 import { Fragment } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import ContactForm from '@/components/ContactForm'
 import TestimonialsSlider from './_components/TestimonialsSlider'
 import ServiceCards from './_components/ServiceCards'
 import { getPublishedPosts } from '@/lib/posts'
@@ -21,13 +22,29 @@ export default async function HomePage() {
     <>
       {/* HERO */}
       <section className="hero" id="home" aria-label="Hero">
-        <div className="hero__content">
-          <h1 className="hero__title">A Worry-Free Future Awaits You</h1>
-          <p className="hero__sub">Our mission is to simplify the immigration process, ensuring you can focus on starting your new life in Portugal without stress.</p>
-          <Link href="/contact" className="btn btn-gold">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-            Book Your Consultation
-          </Link>
+        <div className="container">
+          <div className="hero__inner">
+            <div className="hero__content">
+              <div className="section-tag">Immigration Lawyers in Lisbon</div>
+              <h1 className="hero__title">A Worry-Free Future Awaits You</h1>
+              <p className="hero__sub">Our mission is to simplify the immigration process, ensuring you can focus on starting your new life in Portugal without stress.</p>
+
+              <ul className="hero__trust" role="list">
+                {['Qualified Portuguese attorneys', 'Portuguese, English, Spanish', 'Based in Lisbon'].map(item => (
+                  <li key={item}>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="hero__form-card">
+              <h2 className="hero__form-title">Book Your Consultation</h2>
+              <p className="hero__form-sub">Tell us about your situation and our team will get back to you.</p>
+              <ContactForm />
+            </div>
+          </div>
         </div>
       </section>
 
