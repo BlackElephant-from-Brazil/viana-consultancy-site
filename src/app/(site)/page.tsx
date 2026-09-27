@@ -39,7 +39,7 @@ export default async function HomePage() {
               </ul>
             </div>
 
-            <div className="hero__form-card">
+            <div className="hero__form-card" id="contact-form">
               <h2 className="hero__form-title">Book Your Consultation</h2>
               <p className="hero__form-sub">Tell us about your situation and our team will get back to you.</p>
               <ContactForm />
