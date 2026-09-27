@@ -7,7 +7,7 @@ excerpt: >-
   and protect residence rights.
 author: Patrícia Viana
 slug: aima-litigation-portugal-when-court-action-can-make-a-difference
-published: false
+published: true
 tags:
   - aima
   - litigation
