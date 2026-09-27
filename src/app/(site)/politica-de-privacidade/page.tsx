@@ -41,7 +41,7 @@ export default function PrivacyPolicyPage() {
           </p>
 
           <h2>2. What personal data we collect</h2>
-          <p><strong>Data you provide directly.</strong> When you use our contact form, we collect your name, phone number, email address, subject, and message content.</p>
+          <p><strong>Data you provide directly.</strong> When you use our contact form, we collect your name, phone number, email address, and message content.</p>
           <p><strong>Data collected automatically.</strong> When you browse the Site, and only if you consent via our cookie banner, we use Google Analytics 4 to collect usage data such as pages visited, time spent on the Site, approximate location, device and browser type, and referral source. On the same consent, we also use Microsoft Clarity, which records how pages are used (mouse movement, clicks, scrolling and page navigation) to produce anonymized session replays and heatmaps. Clarity is configured to mask the content you type into forms.</p>
 
           <h2>3. Why we use your data and our legal basis</h2>

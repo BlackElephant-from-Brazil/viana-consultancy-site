@@ -14,9 +14,9 @@ function originAllowed(req: NextRequest): boolean {
 
 export async function POST(req: NextRequest) {
   const body = await req.json()
-  const { name, mobile, email, subject, message } = body
+  const { name, mobile, email, message } = body
 
-  if (!name || !email || !subject || !message) {
+  if (!name || !email || !message) {
     return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
   }
 
@@ -34,7 +34,7 @@ export async function POST(req: NextRequest) {
   const res = await fetch(webhookUrl, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ name, mobile, email, subject, message }),
+    body: JSON.stringify({ name, mobile, email, message }),
   })
 
   if (!res.ok) {

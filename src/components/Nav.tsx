@@ -25,7 +25,9 @@ export default function Nav() {
       <div className="container">
         <div className="nav__inner">
           <Link href="/" className="nav__logo" aria-label="Patrícia Viana — Home">
-            <Image src="/images/logo.png" alt="Patrícia Viana Law Firm logo" width={120} height={38} priority />
+            {/* The stacked wordmark is unreadable at nav height, so the nav uses
+                the globe mark on its own. CSS sizes it to 38px tall. */}
+            <Image src="/images/logo-crop.png" alt="Patrícia Viana Law Firm logo" width={220} height={206} priority />
           </Link>
 
           <ul className="nav__menu" role="list">
