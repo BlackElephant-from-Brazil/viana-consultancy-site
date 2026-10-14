@@ -53,4 +53,4 @@ At Viana Consultancy, immigration litigation is approached with that objective i
 ## Has your AIMA case reached a standstill?
 If you have received an AIMA refusal, are facing a prolonged residence permit delay or believe that your application was handled incorrectly, we can review the complete procedural history and assess the available administrative and judicial options.
 
-<CTAButton href="/#contact-form">Request a Legal Assessment</CTAButton>
+<CTAButton href="https://calendly.com/enquiries-vianaconsultancy/60min">Request a Legal Assessment</CTAButton>

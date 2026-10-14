@@ -5,6 +5,7 @@ import { MDXRemote } from 'next-mdx-remote/rsc'
 import { getPostBySlug, getPublishedPosts } from '@/lib/posts'
 import { FAQ, FAQItem } from '@/components/blog/FAQ'
 import { CTAButton } from '@/components/blog/CTAButton'
+import { CALENDLY_URL } from '@/lib/booking'
 import BlogCard from '@/components/blog/BlogCard'
 import { articleJsonLd, extractFaqItems, faqPageJsonLd } from '@/lib/structuredData'
 
@@ -110,9 +111,9 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
 
           <div style={{ borderTop: '1px solid var(--border)', marginTop: 60, paddingTop: 32, textAlign: 'center' }}>
             <p style={{ color: 'var(--text)', marginBottom: 20 }}>Need legal assistance with your move to Portugal?</p>
-            <Link href="/contact" className="btn btn-gold">
+            <a href={CALENDLY_URL} className="btn btn-gold" target="_blank" rel="noopener noreferrer">
               Book a Consultation
-            </Link>
+            </a>
           </div>
 
           {relatedPosts.length > 0 && (

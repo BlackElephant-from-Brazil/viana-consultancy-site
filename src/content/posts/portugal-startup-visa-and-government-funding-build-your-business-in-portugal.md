@@ -59,6 +59,6 @@ If you are planning to launch or relocate an innovative company to Portugal, the
 
 Book a strategic assessment to evaluate your Portugal Startup Visa eligibility and identify the funding opportunities that may be available for your project.
 
-<CTAButton href="/contact">Assess My Visa and Funding Options</CTAButton>
+<CTAButton href="https://calendly.com/enquiries-vianaconsultancy/60min">Assess My Visa and Funding Options</CTAButton>
 
 Government grants, tax incentives and investment programmes are subject to separate eligibility rules, competitive assessment and availability. Funding cannot be guaranteed.
