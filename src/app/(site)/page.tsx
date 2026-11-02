@@ -7,6 +7,7 @@ import ServiceCards from './_components/ServiceCards'
 import { getPublishedPosts } from '@/lib/posts'
 import type { Post } from '@/lib/posts'
 import BlogCard from '@/components/blog/BlogCard'
+import { CALENDLY_URL } from '@/lib/booking'
 
 export const revalidate = 3600
 
@@ -222,6 +223,42 @@ export default async function HomePage() {
           <cite>–</cite>
         </div>
       </div>
+
+      {/* BOOKING */}
+      <section className="booking section" id="agendar" aria-label="Book a consultation">
+        <div className="container">
+          <div className="booking__grid">
+            <div className="booking__text">
+              <div className="section-tag">Book a Consultation</div>
+              <h2 className="section-title">Talk to a Lawyer About Your Case</h2>
+              <p className="section-sub">
+                Every immigration case is different. In a private 60-minute consultation we review your situation, answer your questions and set out the legal route that makes sense for you, before you apply, submit documents or respond to AIMA.
+              </p>
+              <p className="booking__alt">
+                Not ready to book? <a href="#contato">Send us a message</a> and our team will get back to you.
+              </p>
+            </div>
+
+            <div className="booking__card">
+              <div className="booking__price">
+                <span className="booking__duration">60-minute private consultation</span>
+                <span className="booking__amount">€120</span>
+              </div>
+              <ul className="booking__list" role="list">
+                <li>One-to-one session with a licensed Portuguese immigration lawyer</li>
+                <li>Fee fully credited toward our professional fees if you retain the firm</li>
+                <li>Available in Portuguese, English and Spanish</li>
+                <li>Have any relevant documents at hand: applications, notifications or decisions</li>
+              </ul>
+              <a href={CALENDLY_URL} className="btn btn-gold booking__btn" target="_blank" rel="noopener noreferrer">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                Book Your Consultation
+              </a>
+              <p className="booking__note">Choose a date and time that suits you. Online booking opens in a new tab.</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* CONTACT */}
       <section className="contact section section--white" id="contato" aria-label="Contact">

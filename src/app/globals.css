@@ -237,6 +237,37 @@
     }
     .nav__mobile a:hover { color: var(--gold); }
 
+    /* Header "Book a Consultation" button */
+    .nav__menu a.nav__cta {
+      background: var(--gold);
+      color: var(--white);
+      padding: 9px 18px;
+      border-radius: 30px;
+      font-weight: 600;
+      transition: background var(--transition);
+    }
+    .nav__menu a.nav__cta::after { display: none; }
+    .nav__menu a.nav__cta:hover { background: var(--gold-light); color: var(--white); }
+    .nav__menu a.nav__cta { white-space: nowrap; }
+    /* Between tablet and ~1100px the six links plus socials already fill the
+       bar; the button only fits comfortably on wider screens. The mobile
+       menu (≤768px) carries its own copy. */
+    @media (max-width: 1100px) {
+      .nav__cta-item { display: none; }
+    }
+
+    .nav__mobile a.nav__mobile-cta {
+      margin-top: 16px;
+      padding: 13px 20px;
+      border-bottom: none;
+      border-radius: 30px;
+      background: var(--gold);
+      color: var(--white);
+      font-weight: 600;
+      text-align: center;
+    }
+    .nav__mobile a.nav__mobile-cta:hover { background: var(--gold-light); color: var(--white); }
+
     /* ══════════════════════════════════
        HERO
     ══════════════════════════════════ */
@@ -874,6 +905,104 @@
     ══════════════════════════════════ */
     .contact { background: var(--white); }
     .contact__header { margin-bottom: 44px; }
+
+    /* ══════════════════════════════════
+       BOOKING
+    ══════════════════════════════════ */
+    .booking { background: var(--navy); }
+    .booking .section-title { color: var(--white); }
+    .booking .section-sub { color: rgba(255,255,255,.72); }
+    .booking .section-tag { color: var(--gold-light); }
+    .booking .section-tag::before { background: var(--gold-light); }
+
+    .booking__grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .booking__alt {
+      margin-top: 28px;
+      font-size: 14px;
+      color: rgba(255,255,255,.65);
+    }
+    .booking__alt a {
+      color: var(--gold-light);
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .booking__card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 36px 32px;
+      box-shadow: var(--shadow);
+      border-top: 3px solid var(--gold);
+    }
+
+    .booking__price {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .booking__duration {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--navy);
+    }
+    .booking__amount {
+      font-family: 'Marcellus', serif;
+      font-size: 2.2rem;
+      line-height: 1;
+      color: var(--gold);
+    }
+
+    .booking__list { list-style: none; margin: 0 0 28px; }
+    .booking__list li {
+      position: relative;
+      padding-left: 26px;
+      margin-bottom: 12px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--text);
+    }
+    .booking__list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 6px;
+      width: 14px;
+      height: 8px;
+      border-left: 2.5px solid var(--gold);
+      border-bottom: 2.5px solid var(--gold);
+      transform: rotate(-45deg);
+    }
+
+    .booking__btn { width: 100%; justify-content: center; }
+
+    .booking__note {
+      margin-top: 14px;
+      font-size: 12px;
+      text-align: center;
+      color: var(--text);
+    }
+
+    @media (max-width: 1024px) {
+      .booking__grid { grid-template-columns: 1fr; gap: 40px; }
+      .booking__card { max-width: 560px; }
+    }
+    @media (max-width: 480px) {
+      .booking__card { padding: 28px 20px; }
+      .booking__price { flex-direction: column; align-items: flex-start; gap: 6px; }
+    }
 
     .contact__grid {
       display: grid;

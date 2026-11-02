@@ -37,6 +37,7 @@ export default function Nav() {
             <li><Link href="/#equipe">Team</Link></li>
             <li><Link href="/blog">Blog</Link></li>
             <li><Link href="/#contato">Contact</Link></li>
+            <li className="nav__cta-item"><Link href="/#agendar" className="nav__cta">Book a Consultation</Link></li>
           </ul>
 
           <div className="nav__socials" aria-label="Social media">
@@ -70,6 +71,7 @@ export default function Nav() {
         <Link href="/#equipe" onClick={close}>Team</Link>
         <Link href="/blog" onClick={close}>Blog</Link>
         <Link href="/#contato" onClick={close}>Contact</Link>
+        <Link href="/#agendar" onClick={close} className="nav__mobile-cta">Book a Consultation</Link>
       </nav>
     </nav>
   )
