@@ -18,7 +18,8 @@
       --transition: 220ms ease;
     }
 
-    html { scroll-behavior: smooth; }
+    /* The nav is fixed, so anchor jumps stop below it instead of under it. */
+    html { scroll-behavior: smooth; scroll-padding-top: 84px; }
 
     body {
       font-family: 'Poppins', sans-serif;
@@ -251,9 +252,11 @@
       align-items: center;
       position: relative;
       overflow-x: clip;
-      background-image: url('/images/hero-banner.webp');
+      background-image: url('/images/hero-patricia2.webp');
       background-size: cover;
-      background-position: left center;
+      /* patricia2 is 1600x1066 with her face near the horizontal centre and
+         in the upper third, so centre it and keep the head clear of the top. */
+      background-position: center 30%;
       background-repeat: no-repeat;
     }
 
@@ -501,7 +504,9 @@
     }
 
     .service-card__chevron {
-      font-size: 16px;
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
       transition: transform var(--transition);
     }
 
@@ -1100,12 +1105,11 @@
            then puts it back on the text. */
         margin-inline: -20px;
         padding: 92px 20px 44px;
-        background-image: url('/images/hero-banner.webp');
+        background-image: url('/images/hero-patricia2.webp');
         background-size: cover;
-        /* hero-banner.webp is 2560x640 and Patricia sits at about 19% of its
-           width, so a portrait crop has to be pulled well to the left or it
-           lands on the empty wall behind her. */
-        background-position: 15% center;
+        /* In hero-patricia2.webp her face sits at about 49% of the width, so a
+           portrait crop centred on it keeps her in frame. */
+        background-position: 49% top;
         background-repeat: no-repeat;
       }
 
@@ -1793,4 +1797,259 @@
 
 @media (max-width: 640px) {
   .cookie-banner { flex-direction: column; text-align: center; padding: 16px; }
+}
+
+/* ══════════════════════════════════
+   HOME: hero actions, "How Can We Help?" paths, "How to Start" steps
+   Scoped to classes used only on the home page.
+══════════════════════════════════ */
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 26px;
+}
+
+/* On navy the brighter gold reads better, as the eyebrow already does. */
+.hero .hero__cta-services {
+  color: var(--gold-light);
+  border-color: var(--gold-light);
+}
+.hero .hero__cta-services:hover {
+  background: var(--gold-light);
+  color: var(--navy);
+}
+
+/* Beside the form this button would only point at the card next to it. */
+.hero__cta-request { display: none; }
+
+.team-card__bio + .team-card__bio { margin-top: 10px; }
+
+.contact__header .section-sub { margin-top: -4px; }
+
+/* How Can We Help? */
+.needs__header,
+.start__header { text-align: center; margin-bottom: 48px; }
+.needs__header .section-tag,
+.start__header .section-tag { justify-content: center; }
+.needs__header .section-sub { margin-inline: auto; }
+
+.needs__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.need-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  border: 1px solid rgba(1,19,66,.10);
+  border-top: 3px solid var(--gold);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+}
+
+.need-card__icon {
+  width: 36px;
+  height: 36px;
+  color: var(--gold);
+  margin-bottom: 18px;
+}
+
+.need-card__title {
+  font-family: 'Marcellus', serif;
+  font-size: 1.2rem;
+  color: var(--navy);
+  line-height: 1.3;
+  margin-bottom: 10px;
+}
+
+.need-card__text {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.7;
+  margin-bottom: 18px;
+}
+
+.need-card__links {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.need-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gold);
+  transition: gap var(--transition), color var(--transition);
+}
+.need-card__link:hover { gap: 10px; color: var(--navy); }
+.need-card__link svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+/* How to Start: a real sequence, so the steps are numbered. */
+.start { background: var(--gold-pale); }
+
+.start__steps {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.start-step {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 28px 26px;
+  box-shadow: 0 2px 12px rgba(0,0,0,.05);
+}
+
+.start-step__num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: var(--gold-light);
+  font-family: 'Marcellus', serif;
+  font-size: 1.05rem;
+  margin-bottom: 16px;
+}
+
+.start-step__title {
+  font-family: 'Marcellus', serif;
+  font-size: 1.15rem;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+
+.start-step__text {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.7;
+}
+
+.start__cta { text-align: center; margin-top: 40px; }
+
+@media (max-width: 1024px) {
+  .hero__cta-request { display: inline-flex; }
+  .needs__grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .needs__grid,
+  .start__steps { grid-template-columns: 1fr; }
+  .needs__header,
+  .start__header { margin-bottom: 32px; }
+  .hero__actions { gap: 10px; margin-bottom: 20px; }
+  .hero__actions { align-items: center; }
+  .hero__actions .btn { padding: 11px 20px; font-size: 13px; }
+  /* A second bordered pill would stack under the first on a phone and push
+     the credentials out of the first screen; as a text link it sits beside it. */
+  .hero .hero__cta-services { border-color: transparent; padding-inline: 6px; text-decoration: underline; text-underline-offset: 4px; }
+  .hero .hero__cta-services:hover { background: transparent; color: var(--white); }
+}
+
+/* ══════════════════════════════════
+   BOOK NOW  (id="book-now")
+   Same content and Calendly event as #book-now on visa.vianaconsultancy.com,
+   dressed in this site's type and colours.
+══════════════════════════════════ */
+/* Grey like Services: it now follows the white Blog section, and the white
+   Calendly card reads better on it. */
+.book-section { background: var(--bg); }
+
+.book__head { text-align: center; }
+.book__head .section-tag { justify-content: center; }
+.book__head .section-title { color: var(--navy); }
+.book__head .gold { color: var(--gold); }
+
+.book__sub {
+  max-width: 640px;
+  margin: 0 auto 1.25rem;
+  font-size: 15.5px;
+  line-height: 1.75;
+  color: var(--text);
+}
+
+/* Price and duration: navy, heavier, with a gold highlighter stroke. */
+.book-section .hl {
+  color: var(--navy);
+  font-weight: 700;
+  white-space: nowrap;
+  padding: 0 .12em;
+  background: linear-gradient(transparent 58%, rgba(201,151,58,.32) 58%);
+}
+
+.divider-center {
+  width: 70px;
+  height: 3px;
+  background: var(--gold);
+  margin: 0 auto 1.75rem;
+  border-radius: 2px;
+}
+
+.book-section .calendly-inline-widget {
+  border-radius: var(--radius);
+  overflow: hidden;
+  /* Calendly lays out details and calendar side by side only from about
+     1200px of embed width; the container stops at 1100px. */
+  width: min(1200px, calc(100vw - 40px));
+  margin-left: calc(50% - min(600px, 50vw - 20px));
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity .6s ease var(--d, 0s), transform .6s ease var(--d, 0s);
+}
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+.book__hint {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: .5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in { opacity: 1; transform: none; transition: none; }
+}
+
+.start__cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+.start__book-link {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--navy);
+  text-decoration: underline;
+  text-decoration-color: var(--gold);
+  text-underline-offset: 4px;
+}
+.start__book-link:hover { color: var(--gold); }
+
+/* Tags on a blog post: one-line pills. The card class they used to borrow
+   reserves two lines for grid alignment, which left the text sitting high. */
+.post-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 12px;
+  border-radius: 20px;
+  background: var(--gold-pale);
+  color: var(--gold);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  line-height: 1.4;
+  text-transform: uppercase;
 }

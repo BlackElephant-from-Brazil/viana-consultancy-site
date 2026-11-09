@@ -29,7 +29,7 @@ export default function ServiceCards({ services }: { services: readonly ServiceC
               className="service-card__toggle"
             >
               {open ? 'Show less' : 'Learn more'}
-              <span className={`service-card__chevron${open ? ' service-card__chevron--open' : ''}`} aria-hidden="true">⌄</span>
+              <svg className={`service-card__chevron${open ? ' service-card__chevron--open' : ''}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
 
             <div className={`service-card__details${open ? ' service-card__details--open' : ''}`}>

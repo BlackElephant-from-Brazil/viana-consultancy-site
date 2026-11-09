@@ -18,8 +18,11 @@ const empty: FormState = { name: '', mobile: '', email: '', message: '', company
  *
  * Field ids are generated with useId() so two instances on one page never
  * collide and every label keeps pointing at its own input.
+ *
+ * `submitLabel` only changes the button text, so the home page can say
+ * "Request a Consultation" while /contact keeps "Send Message".
  */
-export default function ContactForm() {
+export default function ContactForm({ submitLabel = 'Send Message' }: { submitLabel?: string } = {}) {
   const [form, setForm] = useState<FormState>(empty)
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
   // Time the form first rendered, used server-side to reject instant (bot) submits.
@@ -146,7 +149,7 @@ export default function ContactForm() {
         ) : (
           <>
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-            Send Message
+            {submitLabel}
           </>
         )}
       </button>
