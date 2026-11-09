@@ -93,7 +93,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
 
           <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 16 }}>
             {post.tags.map(tag => (
-              <span key={tag} className="blog-card__cat" style={{ background: 'var(--gold-pale)', padding: '2px 10px', borderRadius: 20 }}>{tag}</span>
+              <span key={tag} className="post-tag">{tag}</span>
             ))}
           </div>
 
