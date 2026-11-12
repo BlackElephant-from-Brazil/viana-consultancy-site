@@ -1,13 +1,9 @@
 import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
-  images: {
-    // Allow any HTTPS image source. Narrow this to specific CDN/storage
-    // hostnames once the blog's cover image source is finalised.
-    remotePatterns: [
-      { protocol: 'https', hostname: '**' },
-    ],
-  },
+  // No images.remotePatterns: next/image only serves local /images/* files
+  // (blog markdown images render as plain <img>), so the optimizer refuses
+  // every remote URL. Add a specific hostname here if that ever changes.
   async redirects() {
     // Legacy WordPress URLs still indexed by Google, mapped to their
     // real equivalent on the new site to preserve any existing ranking.

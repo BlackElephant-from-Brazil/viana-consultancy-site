@@ -27,15 +27,21 @@ export function useToasts() {
   }, [])
 
   useEffect(() => {
-    try {
-      const raw = sessionStorage.getItem(STORAGE_KEY)
-      if (!raw) return
-      sessionStorage.removeItem(STORAGE_KEY)
-      const pending = JSON.parse(raw) as { message: string; type: ToastType }
-      addToast(pending.message, pending.type)
-    } catch {
-      // ignore malformed/unavailable storage
-    }
+    // Read the queued toast in a callback, not in the effect body, so the
+    // state update does not cascade into a second render. Reading inside the
+    // timer also keeps Strict Mode's mount, unmount, mount from losing it.
+    const timer = setTimeout(() => {
+      try {
+        const raw = sessionStorage.getItem(STORAGE_KEY)
+        if (!raw) return
+        sessionStorage.removeItem(STORAGE_KEY)
+        const pending = JSON.parse(raw) as { message: string; type: ToastType }
+        addToast(pending.message, pending.type)
+      } catch {
+        // ignore malformed/unavailable storage
+      }
+    }, 0)
+    return () => clearTimeout(timer)
   }, [addToast])
 
   return { toasts, addToast }

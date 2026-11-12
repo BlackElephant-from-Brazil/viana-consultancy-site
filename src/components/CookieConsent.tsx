@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useSyncExternalStore } from 'react'
 import Script from 'next/script'
 import Link from 'next/link'
 
@@ -8,19 +8,45 @@ const STORAGE_KEY = 'cookie-consent'
 
 type Consent = 'accepted' | 'rejected'
 
-export default function CookieConsent({ gaId, clarityId }: { gaId?: string; clarityId?: string }) {
-  const [consent, setConsent] = useState<Consent | null>(null)
-  const [ready, setReady] = useState(false)
+// localStorage as an external store: the server snapshot is `undefined`
+// ("not known yet"), so the banner never renders on the server and never
+// flashes for a visitor who already chose.
+const listeners = new Set<() => void>()
 
-  useEffect(() => {
+function subscribe(onChange: () => void) {
+  listeners.add(onChange)
+  window.addEventListener('storage', onChange)
+  return () => {
+    listeners.delete(onChange)
+    window.removeEventListener('storage', onChange)
+  }
+}
+
+// Fallback for browsers that block storage: the choice holds for this page view.
+let pageChoice: Consent | null = null
+
+function readConsent(): Consent | null {
+  try {
     const stored = window.localStorage.getItem(STORAGE_KEY)
-    if (stored === 'accepted' || stored === 'rejected') setConsent(stored)
-    setReady(true)
-  }, [])
+    if (stored === 'accepted' || stored === 'rejected') return stored
+  } catch {
+    // storage blocked
+  }
+  return pageChoice
+}
+
+export default function CookieConsent({ gaId, clarityId }: { gaId?: string; clarityId?: string }) {
+  const consent = useSyncExternalStore<Consent | null | undefined>(subscribe, readConsent, () => undefined)
+  const ready = consent !== undefined
 
   const choose = (value: Consent) => {
-    window.localStorage.setItem(STORAGE_KEY, value)
-    setConsent(value)
+    pageChoice = value
+    try {
+      window.localStorage.setItem(STORAGE_KEY, value)
+    } catch {
+      // storage blocked: pageChoice carries it
+    }
+    listeners.forEach(notify => notify())
   }
 
   return (

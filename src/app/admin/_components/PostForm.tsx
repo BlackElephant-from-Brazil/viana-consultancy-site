@@ -112,15 +112,21 @@ export default function PostForm({ initialPost, mode }: PostFormProps) {
     )
   }
 
-  const toolbar = [
-    { label: 'H1', action: () => insertLinePrefix('# ') },
-    { label: 'H2', action: () => insertLinePrefix('## ') },
-    { label: 'H3', action: () => insertLinePrefix('### ') },
-    { label: 'B', action: () => insertAt('**', '**') },
-    { label: 'I', action: () => insertAt('_', '_') },
-    { label: '"', action: () => insertLinePrefix('> ') },
-    { label: 'FAQ', action: insertFAQTemplate },
-  ]
+  // Plain data so render never holds closures over the textarea ref
+  // (the React Compiler lint cannot tell those apart from ref reads).
+  const toolbar = ['H1', 'H2', 'H3', 'B', 'I', '"', 'FAQ'] as const
+
+  const runToolbar = (label: (typeof toolbar)[number]) => {
+    switch (label) {
+      case 'H1': return insertLinePrefix('# ')
+      case 'H2': return insertLinePrefix('## ')
+      case 'H3': return insertLinePrefix('### ')
+      case 'B': return insertAt('**', '**')
+      case 'I': return insertAt('_', '_')
+      case '"': return insertLinePrefix('> ')
+      case 'FAQ': return insertFAQTemplate()
+    }
+  }
 
   async function handleImageUpload(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0]
@@ -240,8 +246,8 @@ export default function PostForm({ initialPost, mode }: PostFormProps) {
         {tab === 'write' && (
           <>
             <div className="editor-toolbar">
-              {toolbar.map(t => (
-                <button key={t.label} className="toolbar-btn" onClick={t.action} type="button">{t.label}</button>
+              {toolbar.map(label => (
+                <button key={label} className="toolbar-btn" onClick={() => runToolbar(label)} type="button">{label}</button>
               ))}
               <button
                 className="toolbar-btn"

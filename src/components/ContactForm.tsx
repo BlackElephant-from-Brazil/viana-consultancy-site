@@ -1,6 +1,6 @@
 'use client'
 
-import { useId, useRef, useState } from 'react'
+import { useEffect, useId, useRef, useState } from 'react'
 
 type FormState = {
   name: string
@@ -26,7 +26,12 @@ export default function ContactForm({ submitLabel = 'Send Message' }: { submitLa
   const [form, setForm] = useState<FormState>(empty)
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
   // Time the form first rendered, used server-side to reject instant (bot) submits.
-  const startedAt = useRef(Date.now())
+  // Set on mount, not during render (render must stay pure, and the server
+  // render happens earlier than the moment the visitor sees the form).
+  const startedAt = useRef(0)
+  useEffect(() => {
+    startedAt.current = Date.now()
+  }, [])
   const uid = useId()
   const fieldId = (name: string) => `${uid}-${name}`
 
