@@ -57,9 +57,9 @@ export default function Footer() {
         <div className="footer__bottom">
           <p className="footer__copyright">Patrícia Viana Lawyer Copyright © 2026 - All rights reserved.</p>
           <nav className="footer__legal" aria-label="Legal links">
-            <a href="https://vianaconsultancy.com/politica-de-privacidade/" target="_blank" rel="noopener">Privacy Policy</a>
-            <a href="https://vianaconsultancy.com/terms-conditions/" target="_blank" rel="noopener">Terms &amp; Conditions</a>
-            <a href="https://vianaconsultancy.com/politica-de-privacidade/" target="_blank" rel="noopener">Cookie Policy</a>
+            <Link href="/politica-de-privacidade">Privacy Policy</Link>
+            <Link href="/terms-conditions">Terms &amp; Conditions</Link>
+            <Link href="/politica-de-privacidade">Cookie Policy</Link>
           </nav>
         </div>
       </div>

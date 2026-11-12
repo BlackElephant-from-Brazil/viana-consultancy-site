@@ -37,6 +37,19 @@ const nextConfig: NextConfig = {
         destination: '/blog',
         permanent: true,
       },
+      // Any other WordPress category or tag archive (Search Console still
+      // crawls /category/blog/immigration/, for one). Specific mappings above
+      // win because Next uses the first match.
+      {
+        source: '/category/:path*',
+        destination: '/blog',
+        permanent: true,
+      },
+      {
+        source: '/tag/:path*',
+        destination: '/blog',
+        permanent: true,
+      },
       {
         source: '/home',
         destination: '/',
